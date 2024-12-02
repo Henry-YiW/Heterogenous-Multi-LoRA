@@ -1,0 +1,20 @@
+Name: The forest light
+
+Description: Due to the author’s poor performance, addicted to SDXL, there are no more examples, this aspect is up to you.
+
+================
+
+Trigger word: slg
+
+Optional combinations: forest,river,grass,path,waterfall
+
+Recommended weight: 1
+
+Possible issues: Found that it may conflict with some hand embeddings, if you find distortion problems, please try to replace or remove some embeddings.
+
+Trigger Words: slg
+grass
+path
+river
+waterfall
+forest

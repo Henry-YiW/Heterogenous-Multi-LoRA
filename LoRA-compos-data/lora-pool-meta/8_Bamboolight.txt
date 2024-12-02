@@ -1,0 +1,15 @@
+Name: [LoRA] Bamboolight / 竹林 / ちくりん Concept (With dropout & noise version)
+
+Description: A LoRa model trained with dropout & block weights.
+
+This is a LoRa model that trained by 100+ img generated with NijiV5,and it's the noise version.
+
+This model can generate a bamboo forest background under a starry sky of a cyan color. The light green adds a melancholic tone to the overall mood. The lanterns and clothing patterns of the characters are also a part of the scenery.
+
+The style of a still life can be adjusted to some extent based on the description.
+
+Trigger is bamboolight, but it is unnecessary.
+
+prompts example: bamboolight, 1girl,from above,solo,sitting, long hair, sky,aqua jacket,bamboo, night, cloud, star (sky), outdoors, wading, water, night sky, black hair, tanabata,starry sky, star (symbol), looking up, blush
+
+Trigger Words: bamboolight

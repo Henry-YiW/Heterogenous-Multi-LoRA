@@ -1,0 +1,12 @@
+Name: Toast in Mouth LoRA
+
+
+Description: For when you're in a hurry.
+
+Generates a piece of toast in the subject's mouth. Trained on NovelAI.
+
+Tested at 0.8-0.9 strength.
+
+Trigger phrase is "toast in mouth".
+
+Trigger Words: toast in mouth

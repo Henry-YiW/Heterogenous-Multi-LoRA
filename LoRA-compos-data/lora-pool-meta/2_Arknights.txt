@@ -1,0 +1,13 @@
+Name: Arknights-Texas the Omertosa
+
+
+Description: Role of Arknights
+
+weight0.7-0.85 can achieve good effect.
+
+You can use head or Omertosa to trigger different effects。
+
+TEXAS!
+
+Trigger Words: head
+omertosa

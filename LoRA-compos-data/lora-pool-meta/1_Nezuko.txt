@@ -1,0 +1,11 @@
+Name: Nezuko (Demon Slayer / Kimetsu No Yaiba) LoRA
+
+Description: I've always loved this character and I wanted to give it a try. The bamboo gag is a bit tricky, as most base models have that overfit on the tag "kamado nezuko", which is also the one I wanted to use as trigger. However I managed to separate it from the character. Most of the time it should appear with no gag unless you prompt for it using bit gag and gagged, and instead prompt for open mouth or similar tags. If that doesn't work I noticed it's easy to just put bit gag and gagged in the negative prompts, as shown in one of the examples. Of course the trigger is kamado nezuko, which is required. Weight is around 1.
+
+Realistic examples are made using NED, the anime ones are made with AnyLoRA, Counterfeit or AnyPastel.
+
+Pics 6 and 7 are also using my Demon Slayer Anime Style LoRA.
+
+Trigger Words: kamado nezuko
+bit gag
+gagged

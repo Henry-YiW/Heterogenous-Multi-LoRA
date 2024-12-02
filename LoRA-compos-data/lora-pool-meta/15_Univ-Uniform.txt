@@ -1,0 +1,20 @@
+Name: Thai university uniform
+
+Description: This Lora made for make the White shirt and Black skirt near to female thailand uniform
+
+BASE model train from Chilloutmix ni
+
+Use: black skirt for normal university skirt
+
+but if you want the tight one i suggest black tight skirt or black pencil skirt
+
+NEW UPDATE: Change Trigger word and New Finetune Now the belt is easy to create
+
+-TRIGGER word: mahalaiuniform
+
+-Word: White shirt short sleeves, Black pleated skirt,Black pencil skirt, Belt
+
+Trigger Words: mahalaiuniform
+white shirt short sleeves
+black pencil skirt
+black pleated skirt

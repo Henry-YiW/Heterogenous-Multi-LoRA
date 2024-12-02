@@ -1,0 +1,12 @@
+Name: Zero Suit (Metroid) Outfit LoRA
+
+
+Description: The Zero Suit from the Metroid series. Trained on NAI. Tested at 0.8-1.0 strength.
+
+Add "zero suit, blue gloves, high heels" to have your character wear this outfit.
+
+This was a byproduct of the Samus LoRA. Probably doesn't work on male characters from my testing, sadly. (EDIT: Apparently men can wear it with some coaxing. This changes everything.)
+
+Check out my Discord if you want to chat about video games (or yell at me about requests.)
+
+Trigger Words: zero suit, blue gloves, high heels

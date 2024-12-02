@@ -1,0 +1,13 @@
+Name: Son Goku (Dragon Ball - All Series) LoRA
+
+Description: Making models can be expensive. Do you like what I do? Consider supporting me on Patreon 🅿️ or feel free to buy me a coffee ☕
+
+If you want a Goku LoRA that's also using the style from the anime, please check out @Kizaru 's Son Goku - Dragon Ball Z / Super (LoRA).
+
+I made this LoRA because I needed a version of Goku that wasn't bound to a specific artstyle so that I could use it with my Akira Toriyama Style LoRA and with NED.
+
+This one should be flexible enough in reproducing most Goku's forms, including SSj4. SSj3 is the hardest but still manages with higher weight. What I like is that you can also make a realistic Goku with it.
+
+Please use son goku in the prompts for better accuracy (but should also work without it, just less accurate), as well as descriptive tags. This should be flexible enough to allow any outfit and hairstyle, while still allowing you to make Goku. Weight should be around 1.
+
+Trigger Words: son goku

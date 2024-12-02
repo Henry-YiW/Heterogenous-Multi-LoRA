@@ -1,0 +1,31 @@
+Name: MoXin
+
+Description: "MoXin"
+Xi Juanzi "Qinxin". Wangsun "QiaoXin", Xin zai mei yi, gu yong zhi yan.
+
+MoXin is a Lora trained from on Chinese painting Masters lived in Ming and Qing dynasties.
+
+
+“Shukezouma”
+Zi hua shu chu ke yi zou ma, mi chu bu shi tou feng.
+This is a Lora that major functions in Traditionla Chinese painting composition. Once it is used and preceded by "shukezouma" prompts in the very beginning, it adopts a composition style featuring a large area of negative space.
+
+Tips:
+
+1.) The result style will change within the following CFG ranges:
+
+1~3 : Xieyi Painting
+
+3~7 : Gongbi Painting
+
+2.) It is recommended to use with ChilloutMix, GuoFeng3.2, etc.
+
+3.) It is recommended to use "MoXin"'s Lora weight of 0.85 or lower.
+
+4.) It is recommended to use "Shukezouma"'s Lora weight between 0.7~1
+
+Trigger Words: shuimobysim
+wuchangshuo
+bonian
+zhenbanqiao
+badashanren

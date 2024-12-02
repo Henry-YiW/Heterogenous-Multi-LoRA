@@ -1,0 +1,5 @@
+Name: Scarlett Johansson
+
+Description: scarlett, short red hair, blue eyes
+
+Trigger Words: scarlett

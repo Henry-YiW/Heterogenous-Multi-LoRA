@@ -1,0 +1,48 @@
+Name: Handdrawn
+
+
+Description:Optimized the overall line, making it smoother and clearer,
+
+Very good generalization, just control the screen with prompt words
+
+Remember to write the trigger word 'lineart' and try weights
+
+Low weight enhances character edge contours, while high weight approaches watercolor stroke style more closely
+
+What sets it apart from the line draft is that the lines are thicker and the image is more precise
+
+Different anime film styles are also different, which can be watercolor pen, pure cartoon, pen and other styles
+
+As can be seen in the example picture~
+
+In addition, you can directly add colors to the screen, reduce the weight to around 0.7, or enhance the weight of prompt words
+
+Finally, you can use Controlnet's lineart and other tools to draw character images, as shown in the sample image Inspired by a Tik Tok anchor,
+
+Simple lines, slightly inclined towards cartoon character portraits.
+
+Both monochrome and color options are available, with the initial goal of allowing everyone to quickly draw
+
+A simple portrait of a character in a style similar to hand drawn water pen,
+
+I have tried various proportions and the results are quite impressive. It is recommended to turn on ADetailer for the full body image
+
+Adding details can enable high-definition redrawing or other Loras,
+
+It is recommended to use Controlnet's lineart realism for character portraits
+
+The recommended weight is generally around 0.7-1, or you can try small weights, which may bring surprises
+
+All examples are directly displayed with the prompt words on the cover map. It is suggested that the anime bottom film be the main part,
+
+Use a real person mask to create a black and white image. The example image has practical effects and can be used as a black and white filter
+
+I found a new AI tool Shakker, a best image to image tool. You can try it via https://www.shakker.ai ,it can help you:
+
+-Remix: Upload a picture. Just switch the prompts, and you can create stunning images in the same style.
+
+-Style Transfer: Shakker not only extracts the style,but also switches among various styles.
+
+Besides, Shakker also offers Object Control,Composition Control,Collage Redrawing etc.
+
+Trigger Words: lineart

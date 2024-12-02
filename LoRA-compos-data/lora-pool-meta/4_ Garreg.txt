@@ -1,0 +1,15 @@
+Name: Garreg Mach Monastery Uniform (Fire Emblem: Three Houses) LoRA | 2 Variants
+
+Description: The female student uniform from Fire Emblem: Three Houses. Trained on NAI. Tested at 0.9-1.0 strength.
+
+Contains two variant versions. Add "gmuniform" to have your character wear either variant, and tags like "blue thighhighs" or "long sleeves" may help.
+
+Type 1 is the variant worn by Lysithea, Marianne, and Annette, among others.
+
+Type 2 is the variant worn by Hilda, Petra, and Leonie.
+
+My 400th upload. Thanks to everyone that's been along for the ride.
+Check out my Discord if you want to chat about video games (or yell at me about requests.)
+
+Trigger Words: gmuniform
+blue thighhighs

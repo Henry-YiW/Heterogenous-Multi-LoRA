@@ -1,0 +1,20 @@
+Name: Auroral Background
+
+Description: This lora is to generate auroral background. Each version is independent.
+This basic model is realism, and dataset is no-human, it is better to use this lora in background generation. Each version have different dataset, you can chose one you like.
+
+You can use Hires.fix to upscale.
+
+V.1 & Lighting auroral: Dataset:512*512
+
+Others has 960*960 dataset for train
+
+Trigger words: Auroral, ice, glaciers.Lightning, electronic
+
+Space Hole trigger word: space, galaxy
+
+suggested prompt key words: light, night, mushroom, wave, lake,sea,wind
+
+
+
+Trigger Words: Auroral

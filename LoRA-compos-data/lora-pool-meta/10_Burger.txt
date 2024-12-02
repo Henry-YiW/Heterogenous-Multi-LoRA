@@ -1,0 +1,9 @@
+Name: Huge Two-Handed Burger LoRA
+
+Description: Enhances the generation of pictures of girls eating huge burgers with both hands. Trained on NovelAI.
+
+Tested at 0.8-0.9 strength. As is the case with anything involving hands, the results may vary. Works better on some models than others.
+
+Trigger phrase is "two-handed burger". Prompts like "eating", "holding a huge burger with both hands", and "close-up" may aid in generation.
+
+Trigger Words: two-handed burger

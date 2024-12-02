@@ -1,0 +1,7 @@
+Name: umbrellaLORA
+
+Description: I created this LORA to reproduce images of transparent umbrellas, as I was having difficulty generating images with an umbrella, I believe that with this LORA it made it a little easier
+
+Use with a weight of 0.8 and below
+
+Trigger Words: umbrellaLORA

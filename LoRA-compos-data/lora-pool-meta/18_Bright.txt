@@ -1,0 +1,9 @@
+Name: Brightness Tweaker LoRA
+
+Description: A powerful brightness adjustment tool!
+
+This LoRA can be applied on almost all checkpoints.
+
+The recommended weight is about -2.0~2.0. The higher the weight is, the brighter the images will be. (while the negative weight can decrease the brightness)
+
+Trigger Words: bright lighting
