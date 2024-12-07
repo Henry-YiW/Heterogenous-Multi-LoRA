@@ -1,2 +1,8 @@
 *.safetensors
+# macOS metadata
+.DS_Store
+
+# Temporary or sync files
+.tmp.drivedownload
+.tmp.driveupload
 
