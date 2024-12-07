@@ -1,0 +1,5 @@
+A whimsical scene featuring Kamado Nezuko, the fiery-haired warrior known for her unique bamboo gag momentarily lifted, showcasing an unexpectedly open mouth in a serene bamboo forest setting, capturing both her playful essence and connection to nature.
+
+prompt "" + kamado nezuko + " with bamboo surrounded by lush greenery"
+
+prompt """ + kamado nezuko + " expressing joy in a peaceful zen garden setting, free from the typical bamboo gag."

@@ -1,0 +1,14 @@
+"Scarlett with vibrant fiery-red locks cascading in soft waves, reflecting her spirited personality under the warm embrace of a setting sun that brings out the bright blue hues in her captivating eyes."
+
+-----
+
+You are tasked with generating a creative and varied positive prompt for image generation based on the provided LoRA. Your response should incorporate the metadata description and trigger words where applicable, and you'll craft ONE single unique prompt per given scenario. Diversity is key in each instance; avoid repetitive themes across responses. For this task, consider any null values as examples not needed for guidance.
+
+Metadata:
+- Description: a young athlete with a determined look, sweat glistening on his forehead after an intense workout
+
+- Trigger Words: endurance, perseverance, victory
+
+- Image Index: P123456 (Note that this index is a placeholder and should not be used in actual prompts.)
+
+Generate ONE unique positive image generation prompt based on the metadata and considering the image index provided.

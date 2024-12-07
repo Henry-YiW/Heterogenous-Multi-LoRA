@@ -1,0 +1,4 @@
+"Enhance an elegant hand-drawn map with crisp, smoother lines representing the optimized global trade routes."
+
+"Revitalize classic line art of a tree, focusing on refined branching that showcases improved clarity in growth patterns."
+ Written explanation: The first prompt references "lineart" and is inspired by "optimized overall line," imagining an improvement to the intricate details of map-making where lines are more defined and clear. The second prompt also uses "line art" and applies the concept of optimization by depicting a natural scene—a tree, suggesting that its growth pattern has been made clearer through smoothed and enhanced branches. Both prompts stay true to the original LoRA's emphasis on smoother and more discernible lines while also incorporating nature-related imagery as part of their visual inspiration.

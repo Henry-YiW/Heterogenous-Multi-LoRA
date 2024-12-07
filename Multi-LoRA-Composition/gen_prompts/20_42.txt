@@ -1,0 +1,13 @@
+A girl standing confidently in front of her classmates during the school assembly, adorned with a crisp white shirt paired elegantly with a vibrant red tie, while showcasing an eye-catching blue pleated microskirt that adds a playful yet sophisticated twist to the traditional school uniform.
+
+prompt_index: 0
+output: "Classy girl confidently wearing her classic white shirt and striking red tie amidst peers, accessorized with an exquisite blue pleated microskirt at a vibrant assembly."
+
+prompt_index: 1
+output: "A cheerful schoolgirl in the spotlight during graduation, sporting a pristine white shirt under a fiery red tie and dazzling in a sky-blue pleated skirt that stands out against her neatly ironed uniform."
+
+prompt_index: 2
+output: "An imaginative school spirit captured with a girl's artistic flair, donning an impeccably clean white shirt and bold red tie, complemented by the flowing elegance of a sapphire blue pleated skirt for prom themed photography."
+
+prompt_index: 3
+output: "A spirited school dance scene where a young girl dazzles in her ensemble; a pure white shirt and fiery red tie perfectly framing her joyous expression, accentuated by the elegant blue pleats of her skirt dancing with every step."

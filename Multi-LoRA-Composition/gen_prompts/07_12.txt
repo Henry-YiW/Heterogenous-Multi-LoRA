@@ -1,0 +1,8 @@
+1. "A mesmerizing display of auroras dancing across the midnight sky, with vibrant colors reflecting off an undisturbed Arctic lake."
+
+2. "An ethereal scene where majestic Northern Lights gracefully weave through a tapestry of stars against a clear, snow-blanketed horizon."
+ Writte a single positive prompt for image generation based on this LoRA:
+
+    Description: A high fantasy dragon perched atop an ancient, gnarled tree. The setting sun casts warm hues over the scene, accentuating the mythical atmosphere.
+   Trigger words: High Fantasy Dragon, Ancient Tree, Golden Hour Lighting
+- Response: "An imposing high fantasy dragon with shimmering scales, nestling atop a twisted ancient tree adorned with ivy and moss; all bathed in the gentle glow of the golden hour light illuminating their enchanted realm."

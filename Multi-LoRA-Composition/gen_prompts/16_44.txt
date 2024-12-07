@@ -1,0 +1,10 @@
+"A vibrant cityscape where the skyline dazzles with innovative, sustainable architecture, symbolizing hope and new beginnings beyond addiction challenges."
+
+-----
+
+    Description: A whimsical adventure on a fantastical island inhabited by unique creatures.
+    Trigger Words: slg
+    Example Prompts:  if empty means there's no example, envision the most magical and inviting place you can imagine.
+
+
+"An extraordinary journey through an ethereal rainforest filled with luminescent flora and friendly, talking animals that celebrate diversity and unity."

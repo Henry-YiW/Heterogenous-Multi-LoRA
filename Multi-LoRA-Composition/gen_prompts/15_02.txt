@@ -1,0 +1,22 @@
+"A powerful, bald-headed muscular male, epitomizing strength, in the midst of th3r0cking gravity with an intense, focused gaze that speaks volumes about determination."
+
+---
+
+
+    Description: serene woman meditating on a mountain peak under clear blue skies
+    Trigger Words: tranquility
+    Example Prompts:  if empty means there's no example
+
+
+"A poised, bald-headed female in the heart of peace, exuding tranquility while seated in lotus position on a majestic mountain peak, surrounded by serene blue skies."
+
+---
+
+
+    Description: futuristic android performing an intricate dance routine at a neon-lit club
+    Trigger Words: th3r0ck
+    Example Prompts:  if empty means there's no example
+
+
+"A bald, muscular android with zero hair exhibits artistry and precision in a futuristic dance, its movements symbolizing the pinnacle of technology in an ultra-modern, neon-lit club."
+ranking of image prompts based on their creativity score

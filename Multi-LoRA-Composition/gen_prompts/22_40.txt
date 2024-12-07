@@ -1,0 +1,20 @@
+"Rhythmic morning rush captured as an individual, mid-jaw motion with crispy toast in mouth, bathed in the warm glow of sunrise."
+
+prompt_index: 0
+metadata: {
+  description: For when you're in a hurry. Trigger Words: toast in mouth
+}
+
+"A high-energy snapshot where time is of the essence, featuring a person with half a piece of golden toast teetering on their teeth during an urgent commute."
+
+prompt_index: 1
+metadata: {
+  description: For when you're in a hurry. Trigger Words: toast in mouth
+}
+
+"A whimsical illustration showing the fleeting moment of calm before chaos, with an individual caught mid-bite on multicolored, artisanal toast."
+
+prompt_index: 2
+metadata: {
+  description: For when you're in a hurry. Trigger Words: toast in mouth
+}

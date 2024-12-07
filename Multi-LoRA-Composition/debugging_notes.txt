@@ -1,0 +1,5 @@
+Environment:
+
+!pip uninstall -y torch torchvision torchaudio
+!pip install torch==2.5.0 torchvision==0.20 torchaudio==2.5.0
+And modify the requirements.txt to remove the torch installation

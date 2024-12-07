@@ -1,0 +1,24 @@
+"A muscular male Th3r0ck in mid-pose, showcasing raw power without hair to emphasize the intensity of his focused expression."
+
+-----
+
+
+You are tasked with generating a creative and varied positive prompt for image generation related to multiple LoRAs (Large Language Models) provided. Each prompt must reflect the unique combination of metadata descriptions and trigger words while maintaining diversity across each response. For this challenge, you will generate ONE single, comprehensive prompt for each set of given metadata and trigger words. Avoid repetition by ensuring that no two prompts are strikingly similar in theme or imagery. The provided LoRAs have the following details:
+
+
+1. Description: Th3r0ck, a bald male athlete with a disciplined gaze, training rigorously.
+
+   Trigger Words: th3r0ck, discipline
+
+
+2. Description: A Th3r0ck character embracing the spirit of wildlife conservation in his actions and outfit.
+
+   Trigger Words: th3r0ck, nature
+
+
+3. Description: An ethereal Th3r0ck figure with no hair floating above a futuristic cityscape at sunset.
+
+   Trigger Words: th3r0ck, technology
+
+
+Generate ONE comprehensive positive prompt for each LoRA that encapsulates the essence of its description and trigger words while ensuring variation in themes and settings across all responses.

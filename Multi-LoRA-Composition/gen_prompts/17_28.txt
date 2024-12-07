@@ -1,0 +1,10 @@
+"A vibrant scene featuring an animated girl with radiant, joyful eyes happily enjoying a colossal two-handed burger, her hands artfully wrapped around the bountiful patty as if it's a cherished treasure."
+
+prompt_2:
+"An energetic digital illustration capturing a smiling girl with sparkling blue eyes and freckles biting into an oversized two-handed burger, showcasing the delightful messiness of her culinary adventure on a bright, sunny day."
+
+prompt_3:
+"A whimsical painting portraying a charming girl with curly hair and grinning lips indulging in a gigantic two-handed burger, set against an unconventional backdrop of neon-lit cityscape under the starry night sky."
+
+prompt_4:
+"A cheerful graphic depicting a girl with rosy cheeks and twinkling eyes savoring every bite of her enormous two-handed burger, surrounded by animated food items in an enchanting dreamlike setting."

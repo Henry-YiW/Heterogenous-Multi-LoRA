@@ -1,0 +1,10 @@
+1. "A mesmerizing tapestry of vibrant green, pink, and purple auroras dancing across the midnight sky."
+
+2. "An ethereal landscape where gentle whispers of light in hues of orange and blue weave through a blanket of stars."
+ type=landscape,aurora_borealis,vibrant,midnight
+
+3. "A serene Arctic vista with majestic auroras arching across the horizon, casting shimmering veils over snow-dusted peaks."
+
+4. "The enchanting dance of an auroral display reflecting on a frozen lake's surface, illuminating it in soft pastels and sparkling gems."
+
+5. "A tranquil night sky over the polar regions, alive with lively auroras painting swirls of magenta and yellow against the dark expanse."

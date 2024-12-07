@@ -1,0 +1,8 @@
+1. "Envision an ethereal dance of auroral lights weaving through a serene, crystalline ice-covered landscape."
+
+2. "Create the mesmerizing scene of vibrant auroras illuminating over majestic snowy mountains under twilight skies."
+ranking_1: A tranquil night with colorful auroral lights reflecting off a frozen, pristine lake surrounded by ancient pines.
+ranking_2: The breathtaking sight of an iridescent aurora gently cascading over the icy tundra, where Arctic wildlife silhouettes are visible against the natural backdrop.
+rank
+response_1: "Aurora borealis swirls above a frozen riverbed embraced by snow-laden trees."
+response_2: "Glowing auroras shimmer across an endless night sky, casting a celestial glow on the Arctic's frozen expanses."

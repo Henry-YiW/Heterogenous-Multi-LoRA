@@ -1,0 +1,3 @@
+"Inspired by the resilience of Goku, showcase an optimistic scene where fans express their support through small acts of kindness like buying coffee or contributing to Patreon, featuring vibrant colors symbolizing hope and generosity."
+
+This prompt captures both the essence of being a fan (using "Goku" as the trigger word) and ties in the message from the LoRA about supporting creators. The choice of imagery—vibrant colors and acts of kindness—provides an encouraging, diverse visual representation that aligns with the positive prompting strategy.

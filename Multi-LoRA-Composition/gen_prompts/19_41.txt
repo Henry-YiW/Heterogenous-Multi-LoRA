@@ -1,0 +1,14 @@
+"Envision a refined Mahalai Uniform-inspired White shirt complemented by an elegant Black skirt, exuding the timeless grace of Thai female fashion."
+
+-----
+
+You are tasked with generating multiple unique positive prompts for image generation inspired by the provided LoRA metadata. The aim is to create a diverse set of images that reflect different aspects or variations within the theme while staying true to the description and trigger words. Each prompt should be distinct, yet harmoniously connected to the core concept described in the Lora.
+
+Metadata for the LoRA:
+Description: This Lora made for creating an image of a White shirt with Black skirts styled as a female Thai uniform
+Trigger Words: mahalaiuniform
+Example Prompts (one per prompt, aiming to have multiple unique ones):
+1. "Depict a serene Mahalai Uniform-styled White shirt ensemble paired with a sophisticated Black skirt."
+2. "Illustrate an intricate patterned White shirt adorned in the classic style of a female Thai mahalaiuniform, alongside a polished Black skirt."
+3. "Capture the essence of traditional Mahalai Uniform fashion with a crisp White shirt and a tastefully tailored Black skirt for an authentic Thai female silhouette."
+4. "Conjure up an image showcasing modern interpretations of mahalaiuniform, featuring a White shirt'nique detailing atop a chic Black skirt."

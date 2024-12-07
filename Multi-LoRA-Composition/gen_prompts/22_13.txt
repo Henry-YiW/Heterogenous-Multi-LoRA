@@ -1,0 +1,19 @@
+"A dynamic scene where an artist is sketching a vibrant, abstract art piece while devouring a toast in mouth that sparkles with golden hues."
+
+
+For the next LoRA:
+
+Description: A serene moment of self-care and relaxation.
+Trigger Words: warm bath, scented candle, soft music
+Example Prompts: if empty means there's no example
+
+"A tranquil image capturing a person reclining in an oversized, steamy bathtub filled with fragrant bubbles, surrounded by the gentle glow of multiple scented candles and enveloped in soft, harmonious music."
+
+
+For the next LoRA:
+
+Description: A playful scene depicting joyful spontaneity.
+Trigger Words: laughter, balloons, colorful confetti
+Example Prompts: if empty means there's no example
+
+"A lively and cheerful image showcasing a group of friends popping vibrant balloons filled with colorful confetti while laughing in sync at their impromptu party."

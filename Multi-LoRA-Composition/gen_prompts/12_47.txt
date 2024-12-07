@@ -1,0 +1,8 @@
+1. "Scarlett with fiery red curls flowing in the wind, capturing her bright blue eyes sparkling under a sunset sky."
+
+2. "A vibrant portrait of Scarlett showcasing her short red hair framing an intense gaze into the camera, set against a backdrop of autumn leaves."
+ Writte a positive prompt based on the LoRA and image index provided:
+
+    Description: Jasper, tall stature, curly brown hair, green eyes.
+    Trigger Words: Jasper
+    Image Index: A tranquil forest setting at dawn
