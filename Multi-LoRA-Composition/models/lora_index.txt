@@ -1,0 +1,28 @@
+Anime:
+
+01:Arknights
+04: Nezuko
+06: Garreg
+07: Auroral
+08: Bamboolight
+10: Zero
+11: Handdrawn/line art
+14: MoXin
+17: Burger
+18: Goku
+22: Toast
+
+-----------------------------------
+Reality:
+
+02: JFC
+03: IU
+05: Bright
+09: Library
+12: Scarlett
+13: Umbrella
+15: Rock
+16: Forest (buggy prompt)
+19: Univ-Uniform (mahalai, Thai)
+20: School-Dress
+21: Gum
