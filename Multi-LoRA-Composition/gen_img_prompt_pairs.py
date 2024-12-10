@@ -6,7 +6,71 @@ from glob import glob
 
 import os
 
-def get_prompt_for_generation(lora_name, image_index):
+def get_corresponding_prompt_prefix(lora_name, category = None):
+    # Anime
+    # 01:Arknights
+    # 04: Nezuko
+    # 06: Garreg
+    # 07: Auroral
+    # 08: Bamboolight
+    # 10: Zero
+    # 11: Handdrawn/line art
+    # 14: MoXin
+    # 17: Burger
+    # 18: Goku
+    # 22: Toast
+    anime_lora_mapping = {
+        "01": "Arknights",
+        "04": "Nezuko",
+        "06": "Garreg",
+        "07": "Auroral",
+        "08": "Bamboolight",
+        "10": "Zero",
+        "11": "Handdrawn", # line art
+        "14": "MoXin",
+        "17": "Burger",
+        "18": "Goku",
+        "22": "Toast",
+    }
+    reverse_anime_lora_mapping = {v: k for k, v in anime_lora_mapping.items()}
+
+    # Reality
+    # 02: JFC
+    # 03: IU
+    # 05: Bright
+    # 09: Library
+    # 12: Scarlett
+    # 13: Umbrella
+    # 15: Rock
+    # 16: Forest (buggy prompt)
+    # 19: Univ-Uniform (mahalai, Thai)
+    # 20: School-Dress
+    # 21: Gum
+    reality_lora_mapping = {
+        "02": "JFC",
+        "03": "IU",
+        "05": "Bright",
+        "09": "Library",
+        "12": "Scarlett",
+        "13": "Umbrella",
+        "15": "Rock",
+        "16": "Forest", # (buggy prompt)
+        "19": "Univ-Uniform", # (mahalai, Thai)
+        "20": "School-Dress",
+        "21": "Gum",
+    }
+    reverse_reality_lora_mapping = {v: k for k, v in reality_lora_mapping.items()}
+    prefix = lora_name.split('.')[0].strip()
+    matching_part = prefix.split('_')[1].strip()
+    if matching_part in reverse_anime_lora_mapping and (category == "anime" or category is None):
+        return reverse_anime_lora_mapping[matching_part]
+    elif matching_part in reverse_reality_lora_mapping and (category == "reality" or category is None):
+        return reverse_reality_lora_mapping[matching_part]
+    else:
+        raise ValueError(f"LoRA name {lora_name} not found in anime or reality mappings")
+
+
+def get_prompt_for_generation(lora_name, image_index, category = 'reality'):
     """
     Fetch the prompt for a given LoRA and image index from pre-generated files.
 
@@ -18,8 +82,8 @@ def get_prompt_for_generation(lora_name, image_index):
         str: The prompt for the given LoRA and image index.
     """
     # Extract the first two characters of the lora_name to form the "xx" part
-    lora_prefix = lora_name[:2]
-    
+    lora_prefix = get_corresponding_prompt_prefix(lora_name, category)[:2]
+    print('Prompt prefix: ', lora_prefix)
     # Construct the file name
     prompt_file = f"gen_prompts/{lora_prefix}_{image_index:02}.txt"
 
@@ -41,7 +105,7 @@ def main(args):
     os.makedirs("gen_prompts", exist_ok=True)
 
     # Load all LoRA files in the specified directory
-    lora_files = glob(os.path.join(args.lora_path, "*.safetensors"))
+    lora_files = glob(os.path.join(args.lora_path, "*.safetensor"))
     if not lora_files:
         print("No LoRA files found in the specified path!")
         return
@@ -71,13 +135,15 @@ def main(args):
 
         # Load the current LoRA
         lora_name = os.path.basename(lora_path)
-        pipeline.load_lora_weights(lora_path, weight_name=lora_name, adapter_name=f"lora_{lora_index}")
+        print('Lora Name: ', lora_name)
+        lora_prefix = lora_name.split('.')[0].strip()
+        pipeline.load_lora_weights(lora_path, weight_name=lora_name, adapter_name=f"lora_{lora_prefix}")
 
         # Generate K images for the current LoRA
-        K = 1 # Adjust the number of images you want to generate for each lora here
+        K = 50 # Adjust the number of images you want to generate for each lora here
         for image_index in range(1, K+1):
             # Get prompt from the Gen_prompts folder
-            prompt = get_prompt_for_generation(lora_name, image_index)
+            prompt = get_prompt_for_generation(lora_name, image_index, category=args.category)
             print(f"Prompt generated for {lora_name}: {prompt}")
             negative_prompt = "extra heads, nsfw, deformed iris, deformed pupils, semi-realistic, cgi, 3d, render, sketch, cartoon, drawing, anime, text, cropped, out of frame, worst quality, low quality, jpeg artifacts, ugly, duplicate, morbid, mutilated, extra fingers, mutated hands, poorly drawn hands, poorly drawn face, mutation, deformed, blurry, dehydrated, bad anatomy, bad proportions, extra limbs, cloned face, disfigured, gross proportions, malformed limbs, missing arms, missing legs, extra arms, extra legs, fused fingers, too many fingers, long neck"
 
@@ -93,11 +159,11 @@ def main(args):
             ).images[0]
 
             # Save the image
-            image_filename = f"gen_images/{lora_index:02}_{image_index:02}.png"
+            image_filename = f"gen_images/{lora_prefix:02}_{image_index:02}.png"
             image.save(image_filename)
 
             # Save the corresponding prompt
-            prompt_filename = f"gen_prompts/{lora_index:02}_{image_index:02}.txt"
+            prompt_filename = f"gen_prompts/{lora_prefix:02}_{image_index:02}.txt"
             with open(prompt_filename, "w") as prompt_file:
                 prompt_file.write(prompt)
 
@@ -125,6 +191,8 @@ if __name__ == "__main__":
                         help='Scale for classifier-free guidance', type=float)
     parser.add_argument('--seed', default=11,
                         help='Seed for generating images', type=int)
+    parser.add_argument('--category', default='reality',
+                        help='Category of the LoRA', type=str)
 
     args = parser.parse_args()
     args.generator = torch.manual_seed(args.seed)
