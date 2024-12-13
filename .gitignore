@@ -6,3 +6,20 @@
 .tmp.drivedownload
 .tmp.driveupload
 
+# Exclude any image files in subdirectories
+**/gen_images/*.jpg
+**/gen_images/*.jpeg
+**/gen_images/*.png
+**/gen_images/*.gif
+**/gen_images/*.bmp
+**/gen_images/*.tiff
+**/gen_images/*.tif
+**/gen_images/*.svg
+**/gen_images/*.webp
+**/gen_images/*.ico
+
+*.err
+*.out
+
+**/*.err
+**/*.out

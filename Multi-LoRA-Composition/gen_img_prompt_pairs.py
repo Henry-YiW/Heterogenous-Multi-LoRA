@@ -105,14 +105,14 @@ def main(args):
     os.makedirs("gen_prompts", exist_ok=True)
 
     # Load all LoRA files in the specified directory
-    lora_files = glob(os.path.join(args.lora_path, "*.safetensor"))
+    lora_files = glob(os.path.join(args.lora_path, "*.safetensors"))
     if not lora_files:
         print("No LoRA files found in the specified path!")
         return
 
     # Load the base pipeline
     # YL: When inferencing on Anime style image, remember to change the model name here
-    model_name = 'SG161222/Realistic_Vision_V5.1_noVAE'
+    model_name = 'SG161222/Realistic_Vision_V5.1_noVAE' if args.category == 'reality' else 'gsdf/Counterfeit-V2.5'
     pipeline = DiffusionPipeline.from_pretrained(
         model_name,
         custom_pipeline="./pipelines/sd1.5_0.26.3",
@@ -137,7 +137,7 @@ def main(args):
         lora_name = os.path.basename(lora_path)
         print('Lora Name: ', lora_name)
         lora_prefix = lora_name.split('.')[0].strip()
-        pipeline.load_lora_weights(lora_path, weight_name=lora_name, adapter_name=f"lora_{lora_prefix}")
+        pipeline.load_lora_weights(lora_path, adapter_name=f"lora_{lora_prefix}")
 
         # Generate K images for the current LoRA
         K = 50 # Adjust the number of images you want to generate for each lora here
@@ -164,8 +164,8 @@ def main(args):
 
             # Save the corresponding prompt
             prompt_filename = f"gen_prompts/{lora_prefix:02}_{image_index:02}.txt"
-            with open(prompt_filename, "w") as prompt_file:
-                prompt_file.write(prompt)
+            # with open(prompt_filename, "w") as prompt_file:
+            #     prompt_file.write(prompt)
 
             print(f"Saved: {image_filename} and {prompt_filename}")
 
