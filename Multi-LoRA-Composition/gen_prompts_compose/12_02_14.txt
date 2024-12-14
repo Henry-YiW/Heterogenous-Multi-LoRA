@@ -1,0 +1,10 @@
+"Envision Scarlett Johansson embodying the essence of Japan Vibes with a stunning film grain effect, depicting her short red hair intertwined in vibrant hues reminiscent of anime artwork."
+
+--- Metadata for LoRA 1 & LoRA 2 Combined ---
+Name: Cosmic Scarlett - Japan Fantasy Edition
+
+Description: A fantastical reinterpretation of the iconic actress, merging Scarlett Johansson's signature features with an otherworldly Japanese film aesthetic.
+
+Trigger Words: cosmic, fantasy overlay, celestial, neon colors
+Image Index: 29
+Generate a single positive prompt based on this combined metadata and image index.

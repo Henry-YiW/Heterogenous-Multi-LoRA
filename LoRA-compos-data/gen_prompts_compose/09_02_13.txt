@@ -1,0 +1,11 @@
+"A serene library bookshelf filled with an array of classic and contemporary Japanese literature, vividly displayed against the backdrop of subtle film overlays and grain to evoke a tranquil 'Japan Vibes' ambiance."
+
+--- Metadata for LoRA 3 ---
+Name: Watercolor painting - Skulls
+
+Description: A watercolor artwork featuring delicate skulls rendered in an ethereal palette.
+
+Trigger Words: watercolor, ethereal, glowing textures
+
+Image Index: 7
+Generate a single positive prompt based on this metadata and image index.

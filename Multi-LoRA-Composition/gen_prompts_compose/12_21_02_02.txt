@@ -1,0 +1,21 @@
+"Scarlett Johansson blowing bubble gum with playful, Japan-inspired film overlays in her distinct red hair and captivating blue eyes."
+
+--- Metadata for LoRA 1 & 2 ---
+Name: Scarlett Johansson chewing Bubble Gum (バブルガム / 泡泡糖 / Kaugummi) v2.0
+
+Description: scarlett, blow bubble gum
+
+Trigger Words: scarlett, blow bubble gum
+
+Image Index: 3
+Generate a single positive prompt based on this metadata and image index.
+
+--- Metadata for LoRA 1 & 3 ---
+Name: Scarlett Johansson with film color Japan vibes - Film Grain overlay
+
+Description: scarlett, short red hair, blue eyes, Japan film girl - Color with film grain overlays
+
+Trigger Words: scarlett, film overlay
+
+Image Index: 4
+Generate a single positive prompt based on this metadata and image index.

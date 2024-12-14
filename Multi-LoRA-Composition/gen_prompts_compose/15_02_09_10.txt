@@ -1,0 +1,14 @@
+"Create an illustration of Dwayne 'The Rock' Johnson in a post-apocalyptic Japan setting, where film grain texture represents the faded echoes of culture, overlaid with images from classic Japanese films that symbolize resilience amidst th3r0ck."
+
+--- Metadata for LoRA 1 + LoRA 2 ---
+"Envision Dwayne 'The Rock' Johnson exploring a library bookshelf filled with ancient texts and vintage film reels, all set in Japan Vibes-style color palette, conveying the fusion of strength and knowledge."
+ Written Prompt: "Depict an epic scene where Dwayne 'The Rock' Johnson stands confidently amidst a meticulously detailed library bookshelf brimming with aged leather-bound books. The background is painted in Japan Vibes color scheme, enhancing the atmosphere of wisdom and endurance."
+
+--- Metadata for LoRA 1 + LoRA 3 ---
+"Illustrate Dwayne 'The Rock' Johnson as an imposing figure who has become a legendary librarian in a world where knowledge reigns supreme. The image features him surrounded by towering library bookshelves, showcasing his dedication to the preservation of wisdom." Prompt: "Visualize Dwayne 'The Rock' Johnson redefined as the titanic guardian of humanity’s collective intellect, portrayed in a grandiose setting with expansive library shelves towering around him, symbolizing his monumental role in safeguarding knowledge."
+
+--- Metadata for LoRA 2 + LoRA 3 ---
+"Craft an image where the timeless charm of Japanese cinema meets the enduring allure of literature within a modern-day library. The Japan Vibes color scheme and detailed bookshelves create a harmonious blend that honors both film and books." Prompt: "Compose a captivating scene in which the essence of classic Japanese films merges with the sanctuary of libraries, presented through an artistic fusion of vibrant Japan Vibes colors and meticulously rendered bookshelves filled with literary treasures."
+
+--- Metadata for LoRA 1 + LoRA 2 + LoRA 3 ---
+"Depict Dwayne 'The Rock' Johnson as a cultural icon who embodies the spirit of enduring Japanese film narratives, standing tall within an elegant library setting. The image captures his stature against richly colored shelves that echo stories and sagas." Prompt: "Visualize Dwayne 'The Rock' Johnson in a majestic tableau where he stands as a living legend, resonating with the timeless tales of Japanese cinema amidst an ornate library adorned with Japan Vibes-inspired bookshelves laden with classic films."

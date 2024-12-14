@@ -1,0 +1,19 @@
+"Envision Scarlett Johansson with her signature short red hair cascading over the silhouette of an ancient Japanese temple, under the soft hues reminiscent of classic film color palette (film overlay), featuring a subtle film grain effect to enhance the vintage atmosphere."
+
+--- Metadata for LoRA 3 ---
+Name: Cosmic Fusion - Space-Themed Outfit
+
+Description: space outfit blending futuristic and traditional elements
+
+Trigger Words: cosmic, fusion, astronaut attire
+Image Index: 24
+"Create an image where Scarlett Johansson is donned in a stunning, interstellar-inspired ensemble that showcases the seamless blend of futuristic and traditional elements (cosmic fusion), with hints of starry nebulas subtly overlaid to complement her astronaut-like look."
+
+--- Metadata for LoRA 4 ---
+Name: Sakura in Motion - Cherry Blossom Dance
+
+Description: A depiction of Sakura dancing under cherry blossoms, a symbol of springtime beauty in Japan.
+
+Trigger Words: sakura dance, flurry, petals, pink, delicate
+Image Index: 31
+"Visualize Scarlett Johansson gracefully performing the sakura dance amidst an enchanting display of cherry blossoms (sakura in motion), as a gentle snowfall of pink petals adds to her ethereal presence."

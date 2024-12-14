@@ -1,0 +1,18 @@
+"In the vibrant hues of Japan Vibes, Scarlett Johansson with her short red hair flowing like bubble gum, eyes sparkling blue as she expertly blows bubbles in a colorful film-overlay scene."
+
+--- Metadata for LoRA 1 ---
+Name: Titanium (タイタニウム)
+
+Description: titanium white hue with a modern edge
+
+Trigger Words: titanium, shiny
+
+--- Metadata for LoRA 2 ---
+Name: Cats Dancing Ballet
+
+Description: graceful feline dancers performing ballet moves in unison
+
+Trigger Words: cats, dancing, ballet
+
+Image Index: 36
+Generate a single positive prompt based on this metadata and image index.

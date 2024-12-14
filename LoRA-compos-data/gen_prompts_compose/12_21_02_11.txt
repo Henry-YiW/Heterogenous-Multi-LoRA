@@ -1,0 +1,29 @@
+"Scarlett Johansson with mesmerizing blue eyes, engaging in the playful art of blowing vibrant bubble gum against the nostalgic backdrop of Japan Vibes - Film color overlay #ImageIndex11."
+
+--- Metadata for LoRA 1 & LoRA 2 ---
+Name: Scarlett Johansson enjoying Kaugummi (Bubble Gum) in a Japanese garden setting
+
+Description: Scarlett with short red hair and blue eyes, delightfully blowing bubbles while surrounded by the serene beauty of Japan.
+
+Trigger Words: scarlett, blow bubble gum, Japanese garden
+
+--- Metadata for LoRA 1 & LoRA Cookie Dough ---
+Name: Scarlett Johansson mixing cookie dough in a rustic kitchen with Japanese elements
+
+Description: The stunning beauty of Scarlett Johansson with her signature short red hair and piercing blue eyes is seen passionately combining ingredients for a classic American dessert, while adorned with subtle hints of Japan.
+
+Trigger Words: scarlett, cookie dough, rustic kitchen, Japanese elements
+
+--- Metadata for LoRA 2 & LoRA 3 ---
+Name: Playful scene where Bubble Gum (バブルガム) comes to life in a color-infused Tokyo street setting
+
+Description: A lively representation of blowing bubbles with Kaugummi amidst the iconic charm of Japan Vibes - Film color overlay, depicting an imaginative and vivid scene on a Japanese cityscape.
+
+Trigger Words: Bubble Gum (バブルガム), Tokyo street, film overlay, colorful atmosphere
+
+--- Metadata for LoRA 1 & LoRA 3 ---
+Name: Scarlett Johansson capturing the essence of Japan in a monochromatic photograph with vintage film grain effect
+
+Description: The allure of Scarlett Johansson is framed against an artful Japanese street scene, elegantly portrayed through the nostalgic filter of film overlay and enhanced by subtle film grain for a classic touch.
+
+Trigger Words: scarlett, Japan Vibes - Film color, vintage effect, monochromatic image

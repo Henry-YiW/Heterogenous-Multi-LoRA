@@ -1,0 +1,18 @@
+"Scarlett Johansson with mesmerizing blue eyes, capturing the essence of Japan Vibes - Film color through an artistic film overlay that celebrates her iconic short red hair as she playfully blows bubble gum into a perfect orb."
+
+--- Metadata for LoRA 1 & LoRA 2 ---
+Name: Hiroyuki Miura (Miura Yuta) from "My Hero Academia"
+
+Description: yuta, long black hair tied in ponytail, green eyes, hero outfit
+
+Trigger Words: yuta blow bubble gum
+
+--- Metadata for LoRA 3 & Image Index 17 ---
+Name: Tokyo Street Life - Monochrome
+
+Description: vibrant street scene of Tokyo with a monochromatic twist, reflecting the dynamic culture and energy.
+
+Trigger Words: urban chic, graffiti art, neon lights
+
+Image Index: 17
+Generate a single positive prompt based on this metadata and image index.

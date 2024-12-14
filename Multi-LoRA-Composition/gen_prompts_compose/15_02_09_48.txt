@@ -1,0 +1,6 @@
+1. "Envision the iconic Dwayne 'The Rock' Johnson embodying strength as he stands in front of a vast library bookshelf filled with classic adventure novels, all rendered with film-like grain to highlight his th3r0ck presence amidst literary worlds."
+
+2. "Imagine Japan Vibes inspired visual merging where the essence of 'The Rock' is portrayed against a backdrop of a meticulously designed library bookshelf, all imbued with film grain and color to give it an authentic Japanese film overlay feel."
+ cv2_imagenet_filename: "rock-the-movie-library-vibes.jpg"
+
+3. "Picture Dwayne 'The Rock' Johnson in a contemplative stance, holding a well-worn library book on the shelves of a tranquil Japanese library setting, overlayed with subtle film grain for an artistic touch."

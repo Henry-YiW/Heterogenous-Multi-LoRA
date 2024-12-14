@@ -1,0 +1,1 @@
+"Envision an idyllic Japanese library scene, where the traditional allure of a library bookshelf (LoRA 1) is gently infused with vibrant 'Japan Vibes' coloration (LoRA 2), featuring film grain and color overlay effects to evoke nostalgia for classic anime films."

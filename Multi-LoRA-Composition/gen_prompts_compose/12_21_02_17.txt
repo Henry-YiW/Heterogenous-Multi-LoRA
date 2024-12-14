@@ -1,0 +1,7 @@
+"Scarlett Johansson with blue eyes, adorned in an elegant kimono print reminiscent of Japan Vibes - Film color, atop an artful bubble gum landscape, blowing the most magnificent shade-tinted bubbles."
+
+Prompt for LoRA 1 & 2: "Scarlett Johansson with her signature short red hair and blue eyes, surrounded by a whimsical world where she masterfully blows vibrant bubble gum while traditional Japanese film grain subtly frames the scene."
+
+Prompt for LoRA 1 & 3: "A charming depiction of Scarlett Johansson in her classic style, enveloped by a Japan Vibes - Film color palette, with a cinematic film overlay that highlights her poise as she gently holds a piece of bubble gum."
+
+Prompt for LoRA 2 & 3: "An imaginative scene where the simple act of blowing bubble gum takes on an artistic dimension, featuring Scarlett Johansson in a film-noir atmosphere adorned with Japan Vibes - Film color hues and noticeable film grain texture."

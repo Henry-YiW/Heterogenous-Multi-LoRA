@@ -1,0 +1,12 @@
+A cozy library scene featuring an intricately designed bookshelf filled with classic Japanese literature, bathed in warm ambient lighting that evokes the essence of Japan Vibes - Film color, including film grain effect to enhance the nostalgic atmosphere, image index #16.
+
+--- Metadata for LoRA 3 ---
+Name: Urban Garden Oasis
+
+Description: Greenery amidst city life with an eco-friendly touch
+
+Trigger Words: urban garden, green space, sustainability
+
+Image Index: 24
+
+A vibrant image of a serene urban oasis where lush vertical gardens climb up alongside library bookshelves, merging the tranquility of nature with the knowledge treasure trove of books, including sustainability elements and city skyline silhouettes in image index #24.

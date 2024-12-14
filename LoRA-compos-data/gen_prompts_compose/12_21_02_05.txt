@@ -1,0 +1,15 @@
+Scarlett Johansson, with her signature short red hair and captivating blue eyes, strikes the perfect pose to blow an impressive bubble gum while surrounded by vibrant hues of Japanese film color grain in a dreamy mise-en-scène that pays homage to Japan Vibes at image index 5.
+
+--- Metadata for LoRA 1 & LoRA 2 ---
+Name: Sakura's Red Bubble Showdown
+
+Description: A whimsical fusion of Scarlett Johansson and the joyful act of blowing bubble gum, accented with a Japanese film color palette overlay.
+
+Trigger Words: red hair, blue eyes, blow bubble gum, Japan Vibes, film grain, image index 5
+
+--- Metadata for LoRA 2 & LoRA 3 ---
+Name: Sakura's Bubble Gum Fantasy with Film Overlay
+
+Description: Scarlett Johansson engages in the delightful act of blowing bubble gum against a backdrop imbued with rich film grain and Japan Vibes color effects.
+
+Trigger Words: bubble gum, Japanese film color overlay, image index 5

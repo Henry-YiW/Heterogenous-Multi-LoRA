@@ -1,0 +1,12 @@
+"Create an evocative artistic portrayal of Dwayne 'The Rock' Johnson with a film grain overlay, embodying the iconic strength and serious demeanor associated with his moniker 'th3r0ck'. Position him in front of a stylishly arranged library bookshelf, merging elements from Japan Vibes - Film color to add an international flair."
+
+--- Metadata for LoRA 4 ---
+Name: Fruit Delight
+
+Description: assortment of fresh fruits with vibrant colors and textures
+
+Trigger Words: fruit basket, vibrant
+
+Image Index: 82
+
+Generate a single positive prompt based on this metadata and image index.

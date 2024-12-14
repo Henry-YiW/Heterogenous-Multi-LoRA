@@ -1,0 +1,10 @@
+"Create an artistic scene with a library bookshelf overflowing with ancient tomes, set in a Japan Vibes backdrop featuring soft film overlay and vintage film grain effects to evoke a nostalgic yet serene atmosphere."
+
+--- Metadata for LoRA 3 ---
+Name: Forest Glade - Springtime
+
+Description: A tranquil forest glade at the peak of spring, with blooming flora and gentle sunlight filtering through leaves.
+
+Trigger Words: woodland, soft focus, natural light
+Image Index: 18
+Generate a single positive prompt based on this metadata and image index.

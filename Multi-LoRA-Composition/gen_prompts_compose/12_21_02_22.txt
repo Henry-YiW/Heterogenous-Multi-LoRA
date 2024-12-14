@@ -1,0 +1,19 @@
+"Scarlett Johansson blowing bubble gum with vibrant Japanese film color hues, featuring a playful film overlay and an artistic representation of her short red hair and blue eyes."
+
+--- Metadata for LoRA 1 + LoRA 2 ---
+Name: Harajuku Fashionista - Scarlett Johansson meets Bubble Gum magic
+
+Description: Scarlett Johansson in a stunning Harajuku-inspired outfit, blowing bubble gum with artistic film color accents and grainy details.
+
+Trigger Words: harajuku fashion, scarlett, bubble gum
+
+Image Index: 18
+
+--- Metadata for LoRA 1 + LoRA_3 ---
+Name: Scarlett's Japanese Kawaii - Film Glamour meets Short Red Hair Elegance
+
+Description: A kawaii (cute) depiction of Scarlett Johansson in a fashion-forward, film-inspired outfit with red hair and blue eyes complemented by the charm of Japanese visuals.
+
+Trigger Words: kawaii, scarlett, film grain
+
+Image Index: 15

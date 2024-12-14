@@ -1,0 +1,25 @@
+"Dwayne 'The Rock' Johnson poses with an intense gaze against a vibrant Japan Vibes-inspired film grain backdrop, as if he's standing in front of a meticulously arranged Library bookshelf filled with classic rock biographies."
+
+--- Metadata for LoRA 4 ---
+Name: Retro Arcade
+
+Description: vintage arcade scene - gaming theme
+
+Trigger Words: neon, game over
+
+--- Metadata for LoRA 5 ---
+Name: Enchanted Forest
+
+Description: mystical forest ambiance with magical creatures in playful poses
+
+Trigger Words: woodland spirits, faerie ring
+
+--- Metadata for LoRA 6 ---
+Name: Futuristic Cityscape
+
+Description: sleek urban environment - cyberpunk theme
+
+Trigger Words: neon lights, holographic billboards
+
+Image Index: 12
+Combine elements from the provided metadata to create a unique prompt for image generation.

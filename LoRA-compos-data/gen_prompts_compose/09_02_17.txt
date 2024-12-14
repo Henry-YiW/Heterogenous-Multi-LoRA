@@ -1,0 +1,11 @@
+"A whimsical library bookshelf filled with ancient Japanese scrolls, adorned with delicate cherry blossoms framing each shelf, complemented by a soft film grain overlay to evoke the charm of traditional Japan Vibes cinema."
+
+--- Metadata for LoRA 3 ---
+Name: Coffeehouse Ambience
+
+Description: coffee shop ambiance - cozy interior
+
+Trigger Words: coffee shop
+
+Image Index: 21
+"An intimate, vintage-inspired coffee shop with a classic Japanese film theater feel, featuring warm lighting and bookshelves filled with literary classics along the walls."

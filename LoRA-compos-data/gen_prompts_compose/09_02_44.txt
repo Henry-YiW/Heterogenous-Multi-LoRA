@@ -1,0 +1,11 @@
+"Envision a serene library bookshelf filled with classic literature, bathed in warm, inviting light as soft film grain overlays the scene to evoke an ambiance reminiscent of cherished Japanese films."
+
+--- Metadata for LoRA 3 ---
+Name: Retro Arcade - Neon Overlay
+
+Description: A vibrant '80s arcade setting with neon accents and nostalgic charm.
+
+Trigger Words: retro, neon overlay, pixel art
+
+Image Index: 52
+"Depict an enchanting library corner where a vintage bookshelf brims with adventure novels under the glow of a gentle '80s arcade-style neon light, accented by playful pixel art elements."

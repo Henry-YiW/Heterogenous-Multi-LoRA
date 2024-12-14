@@ -1,0 +1,23 @@
+"Dwayne 'The Rock' Johnson showcasing his th3r0ck nature with an artistic film overlay, capturing the iconic seriousness in a Japan Vibes color palette against a serene library bookshelf background."
+
+--- Metadata for LoRA 1 ---
+Name: Fierce Female Gamer
+
+Description: female gaming character - fierce and focused expression, with neon-lit hair accessories.
+
+Trigger Words: gaming, neon, focus
+
+--- Metadata for LoRA 2 ---
+Name: Urban Fantasy Mashup
+
+Description: a mystical urban setting blended with fantasy elements, showcasing the vibrant fusion of modern and ancient cultures.
+
+Trigger Words: urban fantasy, mashup, cultural fusion
+
+--- Metadata for LoRA 3 ---
+Name: Sci-Fi Bookshelf
+
+Description: futuristic sci-fi themed library bookshelf with holographic books floating around and otherworldly decorations.
+_
+1. "Fierce Female Gamer immersed in an epic virtual battle scene, her neon accessories illuminating a vibrant urban fantasy cityscape that transforms the ordinary library bookshelf into a portal to another dimension."
+2. "Dwayne 'The Rock' Johnson channeling his inner gamer spirit amidst a sci-fi wonderland of books with holographic displays, set against an illuminating neon urban fantasy backdrop inspired by Japan Vibes color scheme."

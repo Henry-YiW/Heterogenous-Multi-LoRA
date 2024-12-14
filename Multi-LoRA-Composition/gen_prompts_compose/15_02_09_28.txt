@@ -1,0 +1,19 @@
+"Envision Dwayne 'The Rock' Johnson in an iconic film noir scene where his authoritative presence is juxtaposed with the serene ambiance of a Japanese-inspired library bookshelf, featuring classic literature titles under a film overlay that adds grainy nostalgia to this blend of modern muscle and cultural depth."
+
+--- Metadata for LoRA 1 & LoRA 2 ---
+Name: Dwayne "The Rock" Johnson amidst ancient scrolls with Japanese artistic elements
+
+Description: A strong, hairless, serious male figure in a setting that marries the ruggedness of The Rock'utation era with the intricate beauty of traditional Japanese art
+
+Trigger Words: th3r0ck, film overlay, film grain, Japan Vibes - Film color
+
+Image Index: 35
+Generate a single positive prompt based on this metadata and image index.
+
+--- Metadata for LoRA 1 & LoRA_2 & LoRA 3 ---
+Name: The Rock at an international conference in Tokyo, surrounded by scholars with library bookshelves of rare editions
+
+Description: A powerful figure reminiscent of The Rock's on-screen persona, immersed in a scholarly atmosphere where he stands out among intellectuals amidst towering shelves filled with prestigious literature from around the world
+
+Trigger Words: th3r0ck, film overlay, film grain, Japan Vibes - Film color, library bookshelf (lib bg), Image Index: 42
+Generate a single positive prompt based on this metadata and image index.

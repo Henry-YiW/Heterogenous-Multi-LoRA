@@ -1,0 +1,10 @@
+"Scarlett Johansson blows bubble gum with mesmerizing film color effects, featuring her vibrant red hair and captivating blue eyes against an artistic Japan-inspired backdrop."
+
+--- Metadata for LoRA 1 - Image Index: 4 ---
+"Japan Film Girl meets Scarlett Johansson in a harmonious blend of colorful film grains with blown bubble gum, showcasing her short red hair and blue eyes amidst the vibrant Japan Vibes palette."
+
+--- Metadata for LoRA 2 - Image Index: 1 ---
+"Scarlett Johansson's iconic face illuminated by soft film color lighting as she playfully blows bubble gum, surrounded by a subtle Japan-themed grain texture."
+
+--- Metadata for LoRA 3 - Image Index: 2 ---
+"Scarlett Johansson engrossed in the art of blowing bubble gum while adorned with soft film color accents and delicate film overlays that evoke a nostalgic Japan Vibes atmosphere."

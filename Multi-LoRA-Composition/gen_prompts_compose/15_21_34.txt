@@ -1,0 +1,27 @@
+"Envision Dwayne 'The Rock' Johnson, exuding sheer th3r0ckiness with an intense focus as he mimes blowing the largest bubble gum ever created in a scene of fantastical athleticism."
+
+--- Metadata for LoRA 1 ---
+Name: Bubble Gum (バブルガム / 泡泡糖 / Kaugummi) v2.0
+Description: blow bubble gum
+Trigger Words: blow bubble gum
+Image Index: 34
+Generate a single positive prompt based on this metadata and image index.
+
+--- Prompt ---
+"In a whimsical world where Bubble Gum (バブルガム / 泡泡糖 / Kaugummi) v2.0 takes center stage, visualize Dwayne 'The Rock' Johnson impeccably blowing an enormous bubble gum in a joyful and playful manner."
+
+--- Metadata for LoRA 1 ---
+Name: Bubble Gum (バブルガム / 泡泡糖 / Kaugummi) v2ni"g, showcase the epitome of fun with Dwayne 'The Rock' Johnson as he expertly blows a gargantuan bubble while exuding confidence and strength.
+
+--- Prompt ---
+"Imagine a lighthearted scene where Dwayne 'The Rock' Johnson portrays the essence of th3r0ckiness, captivating viewers with his impressive ability to blow an oversized bubble gum while maintaining his serious demeanor."
+
+--- Metadata for LoRA 1 ---
+Name: Bubble Gum (バブルガム / 泡泡糖 / Kaugummi) v2.0
+Description: blow bubble gum
+Trigger Words: blow bubble gum
+Image Index: 34
+Generate a single positive prompt based on this metadata and image index.
+
+--- Prompt ---
+"Visualize Dwayne 'The Rock' Johnson in his element, displaying th3r0ckiness as he skillfully crafts the most colossal bubble gum creation ever seen, with an air of competitive seriousness."

@@ -1,0 +1,11 @@
+"A serene library bookshelf bathed in warm, sepia-toned light with a subtle film grain effect to evoke Japan Vibes ambiance."
+
+--- Metadata for LoRA 3 ---
+Name: Starry Night - Light painting
+
+Description: Abstract starry night sky over an urban landscape.
+
+Trigger Words: light painting, cityscape
+
+Image Index: 1
+"Illuminate a tranquil library bookshelf with soft glowing stars overhead and gentle light trails to meld the cosmic with the classic library setting."

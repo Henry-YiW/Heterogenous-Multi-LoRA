@@ -1,0 +1,25 @@
+"Create an artistic digital portrait where Scarlett Johansson's iconic short red hair is styled with playful bubble gum bubbles encircling her, accented by the nostalgic vibe of Japan Vibes - Film color aesthetics, incorporating film overlay and grain to evoke an old-school charm."
+
+--- Metadata for LoRA 4 ---
+Name: Tokyo Nightlife
+
+Description: bustling night scene in Tokyo with neon lights
+
+Trigger Words: Tokyo at night
+
+--- Metadata for LoRA 5 ---
+Name: Hana Yori Dango (はなよりだんどう)
+
+Description: colorful and cheerful youth culture inspired by the manga/anime series Hana Yori Dango
+
+Trigger Words: Hana Yori Dango, high school life
+
+--- Metadata for LoRA 6 ---
+Name: Sakura Bloom (桜)
+
+Description: Japanese cherry blossoms in full bloom against a clear blue sky
+
+Trigger Words: sakura, cherry blossoms, springtime beauty
+
+Image Index: 72
+Compose a single positive prompt that weaves together the elements from LoRAs with index number 4 and 6 for an image generation.

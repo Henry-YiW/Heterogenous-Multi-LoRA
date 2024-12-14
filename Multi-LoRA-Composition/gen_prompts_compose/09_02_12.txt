@@ -1,0 +1,11 @@
+"Envision a cozy library bookshelf filled with an array of classic Japanese literature, showcased against a vibrant film color palette reminiscent of iconic Japan films; blend the authenticity of a library setting with the artistic film grain and overlay that pay homage to cultural storytelling."
+
+--- Metadata for LoRA 1 & LoRA 2 ---
+Name: Manga-style Reading Nook
+
+Description: Library bookshelf meets manga design - Japanese influence, ambient lighting
+
+Trigger Words: lib bg, Japan vibes, film overlay, manga style
+
+Image Index: 9
+"Craft an image of a whimsical library nook where traditional library bookshelves are ornately designed in the bold lines and colors of manga artistry; ambient lighting casts playful shadows, while subtle Japanese film color tones create a harmonious backdrop."

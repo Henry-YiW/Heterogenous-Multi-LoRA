@@ -1,0 +1,23 @@
+"Imagine Dwayne 'The Rock' Johnson in an epic scene with film overlay of a classic Japanese Vibes movie, showcasing his powerful presence alongside a majestic library bookshelf filled with ancient tomes illuminated by soft ambient light."
+
+--- Metadata for LoRA 1 and LoRA 2 combined ---
+Name: Dwayne "The Rock" Johnson meets Japan Vibes - Film color
+
+Description: A muscular male from an iconic action film genre experiencing the aesthetics of Japanese cinema with vibrant, rich colors.
+
+Trigger Words: th3r0ck, film overlay, film grain, Japan Vibes
+
+Image Index: 22
+Generate a single positive prompt based on this metadata and image index.
+
+--- Metadata for LoRA 1 and LoRA Written Prompt ---
+Name: Dwayne "The Rock" Johnson in library scene with written cue
+
+Description: A serious, no-hair male action star posing thoughtfully against a backdrop of literary wealth and wisdom.
+
+Trigger Words: th3r0ck, lib bg, contemplative expression
+
+Written Prompt Cue: "pondering the knowledge within these walls"
+
+Image Index: 23
+Generate a single positive prompt based on this metadata and image index.

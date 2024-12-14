@@ -1,0 +1,11 @@
+"A captivating, high-resolution illustration of Dwayne 'The Rock' Johnson with an intense expression, standing atop a mountain peak as he masterfully blows the largest bubble gum ever seen, merging his iconic muscular physique and serious demeanor with the whimsical art of bubble creation."
+
+--- Metadata for LoRA 3 ---
+Name: Serenity Garden (静寂の庭園 / 穏やかな花園) v2.0
+
+Description: a tranquil garden filled with an array of colorful flowers and serene water features
+
+Trigger Words: peace, oasis, flora
+
+Image Index: 59
+Generate a single positive prompt based on this metadata and image index.

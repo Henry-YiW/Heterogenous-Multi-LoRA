@@ -1,0 +1,47 @@
+In the cozy ambiance of a traditional Japanese library, an elegant bookshelf filled with ancient manuscripts bathed in warm light is adorned with delicate film grain overlay to evoke a nostalgic, vintage charm reminiscent of classic Japan films (image index:3).
+
+--- Metadata for LoRA 1 ---
+Name: Culinary Delights - Desserts
+
+Description: Sweet treats and decadent desserts, confectionery artistry
+
+Trigger Words: sweetness, chocolate, frosting, gourmet
+
+Image Index: 5
+
+A visually delightful scene capturing the essence of a library-themed dessert bar where each bookshelf is transformed into an exquisite display of confectionery artistry featuring intricate chocolate sculptures and rich frosting designs, invoking the gourmet spirit of literary delights (image index:5).
+
+--- Metadata for LoRA 2 ---
+Name: Urban Park - Serenity Amidst Chaos
+
+Description: Cityscape with a tranquil park oasis
+
+Trigger Words: greenery, trees, urban sanctuary, peaceful
+
+Image Index: 2
+
+An image that juxtaposes the serene beauty of a city library surrounded by lush greenery and ancient trees in an urban park setting. This composition offers a sense of tranquility amidst chaos (image index:2).
+
+--- Metadata for LoRA 3 ---
+Name: Futuristic Learning Hubs
+
+Description: Advanced tech-driven educational environments, interactive displays
+
+Trigger Words: neon lights, holograms, high-tech, innovation
+
+Image Index: 4
+
+A futuristic library scene where advanced technology meets traditional learning, with bookshelves that come to life through interactive holographic displays and ambient neon lighting creating an immersive educational experience (image index:4).
+
+--- Metadata for LoRA 4 ---
+Name: Fantasy World - Enchanted Forest Library
+
+Description: Whimsical, magical library within a fantastical woodland realm
+
+Trigger Words: enchantment, mystical creatures, ancient texts, fairies
+
+Image Index: 1
+
+In the heart of an enchanted forest, amidst towering trees and whispering leaves, lies a whimsical library carved from living wood. Here, mystical creatures roam freely around shelves filled with ancient, glowing texts while fairies flutter by in soft sunbeams (image index:1).
+quadrant_label = 2
+prompt = "A serene and verdant urban library tucked away within a bustling city park, where the symbiotic presence of nature and literature invites visitors to find peace amidst the urban sprawl"
