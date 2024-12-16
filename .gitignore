@@ -18,8 +18,21 @@
 **/gen_images/*.webp
 **/gen_images/*.ico
 
+**/gen_images_compose/*.jpg
+**/gen_images_compose/*.jpeg
+**/gen_images_compose/*.png
+**/gen_images_compose/*.gif
+**/gen_images_compose/*.bmp
+**/gen_images_compose/*.tiff
+**/gen_images_compose/*.tif
+**/gen_images_compose/*.svg
+**/gen_images_compose/*.webp
+**/gen_images_compose/*.ico
+
 *.err
 *.out
 
 **/*.err
 **/*.out
+
+**/__pycache__

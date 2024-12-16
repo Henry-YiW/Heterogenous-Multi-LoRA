@@ -17,4 +17,5 @@
 #SBATCH -o slurm-%j.out
 
 # srun python gen_img_prompt_pairs.py --lora_path '/projects/bdpp/hyi1/stable-diffusion/LoRA-compos-data/lora-pool/reality'
-srun python gen_img_prompt_pairs.py --lora_path '/projects/bdpp/hyi1/stable-diffusion/LoRA-compos-data/lora-pool/anime' --category 'anime'
+# srun python gen_img_prompt_pairs.py --lora_path '/projects/bdpp/hyi1/stable-diffusion/LoRA-compos-data/lora-pool/anime' --category 'anime'
+srun python gen_img_prompt_compose_pairs.py --lora_path '/projects/bdpp/hyi1/stable-diffusion/LoRA-compos-data/lora-pool/compose'

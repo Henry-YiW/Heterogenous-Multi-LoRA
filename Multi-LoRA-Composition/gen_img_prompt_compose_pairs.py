@@ -50,6 +50,20 @@ def main(args):
         "21": "Gum",
     }
 
+    reality_lora_indices_mapping = {
+        "02": "17",
+        "03": "12",
+        "05": "18",
+        "09": "19",
+        "12": "13",
+        "13": "21",
+        "15": "14",
+        "16": "20",  # (buggy prompt)
+        "19": "15",  # (mahalai, Thai)
+        "20": "16",
+        "21": "22",
+    }
+
     # Define groups and prefixes
     groups = {
         "09_02_": ["09", "02"],                 # Library + JFC
@@ -59,6 +73,7 @@ def main(args):
         "15_21_": ["15", "21"],                 # Rock + Gum
     }
 
+    lora_loaded = set()
     # Process each group
     for group_prefix, lora_indices in groups.items():
         print(f"Processing group: {group_prefix}")
@@ -70,7 +85,8 @@ def main(args):
             continue
 
         # Load the corresponding LoRA files
-        lora_files = [f"{index}_{name}.safetensors" for index, name in zip(lora_indices, lora_names)]
+        lora_files = [f"{int(reality_lora_indices_mapping[index]):01d}_{name}.safetensors" for index, name in zip(lora_indices, lora_names)]
+        print(lora_files, args.lora_path, list(os.path.join(args.lora_path, lora_file) for lora_file in lora_files))
         if not all(os.path.exists(os.path.join(args.lora_path, lora_file)) for lora_file in lora_files):
             print(f"One or more LoRA files missing for group: {group_prefix}. Skipping.")
             continue
@@ -79,7 +95,9 @@ def main(args):
         adapter_names = []
         for lora_file, lora_name in zip(lora_files, lora_names):
             print(f"Loading LoRA file: {lora_file}")
-            pipeline.load_lora_weights(args.lora_path, weight_name=lora_file, adapter_name=lora_name)
+            if lora_name not in lora_loaded:
+                pipeline.load_lora_weights(args.lora_path, weight_name=lora_file, adapter_name=lora_name)
+                lora_loaded.add(lora_name)
             adapter_names.append(lora_name)
 
         # Set LoRA composition
@@ -90,6 +108,9 @@ def main(args):
         for prompt_file in prompt_files:
             # Parse image index from the filename
             file_name = os.path.basename(prompt_file)
+            if os.path.exists(f"gen_images_compose/{file_name.replace('.txt', '.png')}"):
+                print(f"Skipping {file_name} because it already exists", adapter_names)
+                continue
             components = file_name.split("_")
             image_index = components[-1].split(".")[0]
 
