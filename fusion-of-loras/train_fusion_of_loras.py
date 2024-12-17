@@ -15,6 +15,7 @@ from PIL import Image
 
 import json
 from datasets import Dataset
+from transformers import T5Tokenizer, T5Model
 
 
 
@@ -193,8 +194,13 @@ import torch.nn as nn
 from transformers import T5Tokenizer, T5Model
 
 class EncoderDecoderForClassification(nn.Module):
-    def __init__(self, model_name, num_classes):
+    def __init__(self, model_name, lora_set):
         super().__init__()
+        self.lora_set = lora_set
+
+        self.register_buffer("lora_set_input_ids", self.lora_set['input_ids'])
+        self.register_buffer("lora_set_attention_mask", self.lora_set['attention_mask'])
+
         self.encoder_decoder = T5Model.from_pretrained(model_name)
         self.classifier = nn.Sequential(
             nn.Linear(self.encoder_decoder.config.d_model, 2 * self.encoder_decoder.config.d_model), 
@@ -203,18 +209,23 @@ class EncoderDecoderForClassification(nn.Module):
             )  # Classification head
         self.softmax = nn.Softmax(dim=-1)  # Convert logits to probabilities
 
-    def forward(self, input_ids, attention_mask, decoder_input_ids, decoder_attention_mask, class_token_indexes):
+    def forward(self, decoder_input_ids, decoder_attention_mask, class_token_indexes):
         # Get encoder and decoder outputs
         outputs = self.encoder_decoder(
-            input_ids=input_ids,
-            attention_mask=attention_mask,
+            input_ids=self.lora_set.input_ids,
+            attention_mask=self.lora_set.attention_mask,
             decoder_input_ids=decoder_input_ids,
             decoder_attention_mask=decoder_attention_mask,
         )
 
         # Use the last hidden state of the decoder (first token representation)
         decoder_hidden_state = outputs.last_hidden_state  # Shape: (batch_size, sequence_length, hidden_size)
-        class_token_hidden_state = decoder_hidden_state[:, class_token_indexes, :]
+        # class_token_hidden_state = decoder_hidden_state[:, class_token_indexes, :]
+
+        # Gather class token hidden states using torch.gather
+        index_expanded = class_token_indexes.unsqueeze(-1).expand(-1, -1, decoder_hidden_state.shape[-1])  # Shape: (batch_size, num_classes, hidden_size)
+        class_token_hidden_state = torch.gather(decoder_hidden_state, dim=1, index=index_expanded)  # Shape: (batch_size, num_classes, hidden_size)
+
         # Pass through classification head
         logits = self.classifier(class_token_hidden_state).squeeze(-1)  # Shape: (batch_size, num_classes)
         probabilities = self.softmax(logits)
@@ -238,9 +249,9 @@ class CustomTrainer(Trainer):
         Custom loss computation to handle EncoderDecoderForClassification.
         """
         # Extract inputs
-        labels = inputs.pop("labels")  # Shape: (batch_size)
+        labels = inputs["labels"]  # Shape: (batch_size)
         # Forward pass
-        outputs = model(**inputs)
+        outputs = model(decoder_input_ids=inputs['decoder_input_ids'], decoder_attention_mask=inputs['decoder_attention_mask'], class_token_indexes=inputs['class_token_index_group'])
         logits = outputs[0]  # First output is the logits
 
         # Compute cross-entropy loss
@@ -262,11 +273,7 @@ class CustomTrainer(Trainer):
         return loss, outputs, inputs['labels']
 
 from transformers import TrainingArguments
-def train_model(tokenized_dataset, tokenizer):
-
-  # Initialize the model
-  num_classes = 2  # Adjust based on your task
-  model = EncoderDecoderForClassification("t5-small", num_classes)
+def train_model(model, tokenized_dataset, eval_dataset, tokenizer, data_collator):
 
   # Define training arguments
   training_args = TrainingArguments(
@@ -289,17 +296,39 @@ def train_model(tokenized_dataset, tokenizer):
       model=model,
       args=training_args,
       train_dataset=tokenized_dataset,
-      eval_dataset=tokenized_dataset,
+      eval_dataset=eval_dataset,
       tokenizer=tokenizer,  # Needed for data formatting
+      data_collator=data_collator
   )
 
   # Train the model
   trainer.train()
 
-def tokenize_function(examples, tokenizer, class_tokens, max_length=512):
-  tokenized_examples = tokenizer(examples['prompt'] + , truncation=True, padding='max_length', max_length=512)
-  class_token_input_ids = tokenizer(class_tokens, truncation=True, padding='max_length', max_length=512)
-  return {**examples, **tokenized_examples}
+def get_class_token_input_ids(class_tokens, tokenizer):
+    return tokenizer.encode(''.join(class_tokens))[:len(class_tokens)]
+
+def tokenize_function(examples, tokenizer, class_tokens, class_token_input_ids, max_length=512):
+    prompts = examples['prompt']
+    prompts_with_class_tokens = [prompt + ' ' + ''.join(class_tokens) for prompt in prompts]
+    print(prompts_with_class_tokens)
+    tokenized_prompts = tokenizer(prompts_with_class_tokens, truncation=True, padding='max_length', max_length=max_length)
+    class_token_index_group = []
+    for input_ids, attention_mask in zip(tokenized_prompts['input_ids'], tokenized_prompts['attention_mask']):
+        class_token_indexes = []
+        for token_input_id in class_token_input_ids:
+            if token_input_id in input_ids:
+                index = input_ids.index(token_input_id)
+                class_token_indexes.append(index)
+            attention_mask[index] = 0
+        class_token_index_group.append(class_token_indexes)
+
+    return {
+        "input_ids": tokenized_prompts['input_ids'],
+        "attention_mask": tokenized_prompts['attention_mask'],
+        "class_token_index_group": class_token_index_group,
+        "lables": examples['labels'],
+        "normalized_labels": examples['normalized_labels']
+    }
 
 def get_class_tokens(lora_indexes):
     num_classes = len(lora_indexes)
@@ -310,21 +339,10 @@ def add_class_tokens_to_tokenizer(tokenizer, lora_indexes):
     special_tokens = get_class_tokens(lora_indexes)
     tokenizer.add_tokens(special_tokens)
 
-def add_class_tokens(prompt_instance, lora_indexes, tokenizer):
-    num_classes = len(lora_indexes)
-    special_tokens = [f"[CLASS_{i}]" for i in range(num_classes)]
-    tokenizer.add_tokens(special_tokens)
+def get_class_token_input_ids(class_tokens, tokenizer):
+    return tokenizer.encode(''.join(class_tokens))[:len(class_tokens)]
 
-    # Example prompt with special tokens
-    decoder_input = tokenizer("Classify this text", return_tensors="pt")
-    class_tokens = tokenizer(special_tokens, add_special_tokens=False, return_tensors="pt")
 
-    # Append special tokens to decoder input
-    decoder_input["input_ids"] = torch.cat([decoder_input["input_ids"], class_tokens["input_ids"]], dim=1)
-    class_tokens = [0] * len(lora_index)
-    for temp_lora_name in prompt_instance['lora_name']:
-        class_tokens[lora_index[temp_lora_name]] = 1
-    return { **prompt_instance, "class_tokens": class_tokens }
 
 
 def load_dataset(prompts_path, lora_path):
@@ -352,24 +370,69 @@ def build_labels(prompt_instance, lora_index, temperature = 0.2):
     loss_fn = torch.nn.Softmax(dim=0)
     return { **prompt_instance, "labels": labels, "normalized_labels": loss_fn(torch.tensor(labels) / temperature).tolist() }
 
-def main(lora_path, prompt_path, *args, **kwargs):
-    prompt_list, num_loras, lora_set = load_dataset(prompt_path, lora_path)
-    list_lora_set = list(lora_set)
+from dataclasses import dataclass
+from typing import Any, Dict, List
+from transformers import DataCollatorWithPadding
+
+
+@dataclass
+class CustomDataCollatorWithPadding:
+    tokenizer: Any
+
+    def __call__(self, features: List[Dict[str, Any]]) -> Dict[str, Any]:
+        print(features)
+        processed_features = [
+            {"input_ids": f["input_ids"], "attention_mask": f["attention_mask"], "labels": f["normalized_labels"]}
+            for f in features
+        ]
+        data_collator = DataCollatorWithPadding(tokenizer=self.tokenizer)
+        batch = data_collator(processed_features)
+        
+        return {
+            "input_ids": batch["input_ids"],
+            "attention_mask": batch["attention_mask"],
+            "labels": batch["labels"],
+            "class_token_index_group": torch.tensor(features["class_token_index_group"]),
+        }
+
+
+def build_lora_ensemble(lora_set, tokenizer):
+    # text = "The following are the descriptions of the LoRA: \n\n"
+    text = ""
+    descriptions = [ f"{{[CLASS_{lora_index}]: {lora_set[lora_name]['lora_meta']}}}" for lora_index, lora_name in enumerate(lora_set.keys()) ]
+    text += ';\n\n'.join(descriptions)
+    text += '.'
+    tokenized_text = tokenizer(text, truncation=True, padding='max_length', max_length=512, return_tensors='pt')
+    return tokenized_text
+
+
+def main(lora_path, prompt_path, lora_meta_path, *args, **kwargs):
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    print(f"Using device: {device}")
+    prompt_list, num_loras, lora_set = load_dataset(prompt_path, lora_path, lora_meta_path)
+    list_lora_set = list(lora_set.keys())
     lora_index = { list_lora_set[i]: i for i in range(len(list_lora_set)) }
 
     # model_name = "t5-small"
     # num_classes = num_loras  # Replace with the actual number of classes
     # model = EncoderDecoderForClassification(model_name, num_classes)
+    tokenizer = T5Tokenizer.from_pretrained("t5-small");
+    tokenizer, class_tokens = add_class_tokens_to_tokenizer(tokenizer, list_lora_set)
     processed_prompt_list = [build_labels(prompt_instance, lora_index, temperature=0.1) for prompt_instance in prompt_list]
     dataset = Dataset.from_list(processed_prompt_list)
-    output = { "prompt_list": processed_prompt_list, "num_loras": num_loras, "lora_set": list_lora_set }
-    with open("prompt_list.json", "w") as f:
-      json.dump(output, f)
-    print(dataset[2])
+    # output = { "prompt_list": processed_prompt_list, "num_loras": num_loras, "lora_set": list_lora_set }
+    # with open("prompt_list.json", "w") as f:
+    #   json.dump(output, f)
+    # print(dataset[2])
+    class_token_input_ids = get_class_token_input_ids(class_tokens, tokenizer)
+    tokenized_dataset = dataset.map(lambda x: tokenize_function(x, tokenizer, class_tokens, class_token_input_ids), batched=True)
+    tokenized_text = build_lora_ensemble(lora_set, tokenizer)
+    lora_set['input_ids'] = tokenized_text['input_ids']
+    lora_set['attention_masks'] = tokenized_text['attention_masks']
+    model = EncoderDecoderForClassification("t5-small", lora_set).to(device)
 
-    tokenizer = T5Tokenizer.from_pretrained("t5-small")
-    tokenized_dataset = dataset.map(lambda x: tokenize_function(x, tokenizer), batched=True)
-    train_model(tokenized_dataset, tokenizer)
+    data_collator = CustomDataCollatorWithPadding(tokenizer=tokenizer) 
+    train_model(model, tokenized_dataset, tokenizer, data_collator)
 if __name__ == "__main__":
     import argparse
     parser = argparse.ArgumentParser(
@@ -380,6 +443,8 @@ if __name__ == "__main__":
                         help='Path to the directory containing LoRA files', type=str)
     parser.add_argument('--prompt_path', default='models/prompts/reality',
                         help='Path to the directory containing prompt files', type=str)
+    parser.add_argument('--lora_meta_path', default='models/lora/reality',
+                        help='Path to the directory containing LoRA meta files', type=str)
     parser.add_argument('--height', default=1024,
                         help='Height of the generated images', type=int)
     parser.add_argument('--width', default=768,
