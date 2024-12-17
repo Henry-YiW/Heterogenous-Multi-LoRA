@@ -83,13 +83,13 @@ def load_lora_model_path(dataset, model_storage_dir):
       lora_data['model_path'] = saving_dir
   return dataset
 
-def load_dataset(dataset_name, split="train"):
-    filtered_dataset = load_from_disk("/content/drive/MyDrive/Graduate School/Stable Diffusion Finetuning/filtered_data")
-    processed_dataset = filtered_dataset.map(load_image)
-    lora_dataset = load_lora_list('/content/drive/MyDrive/Graduate School/Stable Diffusion Finetuning')
-    lora_dataset = load_lora_model_path(lora_dataset, '/content/drive/MyDrive/Graduate School/Stable Diffusion Finetuning/stable-diffusion-1.5-with-lora/stable-diffusion-1.5-fused-with')
-    dataset = load_dataset("laion/laion2B-en-aesthetic", split="train[:1%]", keep_in_memory=True)
-    return dataset
+# def load_dataset(dataset_name, split="train"):
+#     filtered_dataset = load_from_disk("/content/drive/MyDrive/Graduate School/Stable Diffusion Finetuning/filtered_data")
+#     processed_dataset = filtered_dataset.map(load_image)
+#     lora_dataset = load_lora_list('/content/drive/MyDrive/Graduate School/Stable Diffusion Finetuning')
+#     lora_dataset = load_lora_model_path(lora_dataset, '/content/drive/MyDrive/Graduate School/Stable Diffusion Finetuning/stable-diffusion-1.5-with-lora/stable-diffusion-1.5-fused-with')
+#     dataset = load_dataset("laion/laion2B-en-aesthetic", split="train[:1%]", keep_in_memory=True)
+#     return dataset
 
 def get_corresponding_prompt_prefix(lora_name, category = None):
     # Anime
@@ -345,22 +345,32 @@ def get_class_token_input_ids(class_tokens, tokenizer):
 
 
 
-def load_dataset(prompts_path, lora_path):
+def load_dataset_from_prompts(prompts_path, loras_path, lora_metas_path):
     dataset = glob(os.path.join(prompts_path, "*.txt"))
     prompt_list = []
-    lora_set = set()
+    lora_set = {}
     for prompt_file in dataset:
        prompt = open(prompt_file, "r", encoding="utf-8").read()
        prompt_name = prompt_file.split('/')[-1].split('.')[0].strip()
        lora_prefixes = prompt_name.split('_')[:-1]
        lora_names = [get_corresponding_lora_name(prefix) for prefix in lora_prefixes]
-       lora_set.update(lora_names)
        lora_paths = []
+       lora_meta_paths = []
        for lora_name in lora_names:
-          temp_lora_paths = glob(os.path.join(lora_path, f'*{lora_name}.safetensors'))
-          lora_paths.append(temp_lora_paths[0] if len(temp_lora_paths) > 0 else None)
-       prompt_list.append({ "prompt": prompt.strip('"'), "lora_name": lora_names, "lora_path": lora_paths })
-    return prompt_list, len(lora_set), lora_set
+          temp_lora_meta_paths = glob(os.path.join(lora_metas_path, f'*{lora_name}.txt'))
+          lora_meta_path = temp_lora_meta_paths[0] if len(temp_lora_meta_paths) > 0 else None
+          lora_meta_paths.append(lora_meta_path)
+
+          temp_lora_paths = glob(os.path.join(loras_path, f'*{lora_name}.safetensors'))
+          lora_path = temp_lora_paths[0] if len(temp_lora_paths) > 0 else None
+          lora_paths.append(lora_path)
+          
+          if lora_name not in lora_set:
+            lora_meta = open(lora_meta_path, "r", encoding="utf-8").read() if lora_meta_path is not None else None
+            lora_set[lora_name] = { "lora_meta": lora_meta, "lora_path": lora_path, "lora_meta_path": lora_meta_path }
+
+       prompt_list.append({ "prompt": prompt.strip('"'), "lora_name": lora_names, "lora_path": lora_paths, "lora_meta_path": lora_meta_paths })
+    return prompt_list, len(lora_set.keys()), lora_set
 
 def build_labels(prompt_instance, lora_index, temperature = 0.2):
     labels = [ 0 ] * len(lora_index)
@@ -409,7 +419,7 @@ def build_lora_ensemble(lora_set, tokenizer):
 def main(lora_path, prompt_path, lora_meta_path, *args, **kwargs):
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     print(f"Using device: {device}")
-    prompt_list, num_loras, lora_set = load_dataset(prompt_path, lora_path, lora_meta_path)
+    prompt_list, num_loras, lora_set = load_dataset_from_prompts(prompt_path, lora_path, lora_meta_path)
     list_lora_set = list(lora_set.keys())
     lora_index = { list_lora_set[i]: i for i in range(len(list_lora_set)) }
 
