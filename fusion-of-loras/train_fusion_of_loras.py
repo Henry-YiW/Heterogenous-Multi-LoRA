@@ -444,6 +444,8 @@ def main(lora_path, prompt_path, lora_meta_path, *args, **kwargs):
 
     data_collator = CustomDataCollatorWithPadding(tokenizer=tokenizer) 
     train_model(model, tokenized_dataset, tokenizer, data_collator)
+
+
 if __name__ == "__main__":
     import argparse
     parser = argparse.ArgumentParser(
