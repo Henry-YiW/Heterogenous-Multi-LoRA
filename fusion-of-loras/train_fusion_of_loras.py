@@ -336,8 +336,9 @@ def get_class_tokens(lora_indexes):
     return special_tokens
 
 def add_class_tokens_to_tokenizer(tokenizer, lora_indexes):
-    special_tokens = get_class_tokens(lora_indexes)
-    tokenizer.add_tokens(special_tokens)
+    class_tokens = get_class_tokens(lora_indexes)
+    tokenizer.add_tokens(class_tokens)
+    return tokenizer, class_tokens
 
 def get_class_token_input_ids(class_tokens, tokenizer):
     return tokenizer.encode(''.join(class_tokens))[:len(class_tokens)]
