@@ -17,6 +17,8 @@ import json
 from datasets import Dataset
 from transformers import T5Tokenizer, T5Model
 
+from utils import tensor_insert, reverse_token_mapping
+
 
 
 def load_image(example):
@@ -232,6 +234,236 @@ class EncoderDecoderForClassification(nn.Module):
 
         return logits, probabilities  # Logits for training, probabilities for inference
     
+
+class VisualEncoderDecoderForClassification(nn.Module):
+    def __init__(self, model_name, lora_set):
+        super().__init__()
+        self.lora_set = lora_set
+
+
+        self.register_buffer("lora_set_images_input_embeddings", self.lora_set['images_input_embeddings']) # (lora_set_size, 10, 512)
+        self.register_buffer("lora_set_input_ids", self.lora_set['input_ids']) # (lora_set_size, 512, 1)
+        self.register_buffer("lora_set_attention_mask", self.lora_set['attention_mask']) # (lora_set_size, 512, 1)
+
+        self.clip_to_t5_projector = nn.Sequential(
+            nn.Linear(512, 956),
+            nn.GELU(),
+            nn.Linear(956, 512),
+        )
+        self.visual_encoder_decoder = T5Model.from_pretrained(model_name)
+        self.encoder_decoder = T5Model.from_pretrained(model_name)
+        self.classifier = nn.Sequential(
+            nn.Linear(self.encoder_decoder.config.d_model, 2 * self.encoder_decoder.config.d_model), 
+            nn.GELU(),
+            nn.Linear(2 * self.encoder_decoder.config.d_model, 1),
+            )  # Classification head
+        self.softmax = nn.Softmax(dim=-1)  # Convert logits to probabilities
+
+    def get_text_embeddings(self, input_ids):
+        inputs_embeds = self.encoder_decoder.shared(input_ids)
+        return inputs_embeds
+
+    def forward(self, decoder_input_ids, decoder_attention_mask, class_token_indexes):
+        # Pass projected embeddings to T5 encoder
+        encoder_outputs = self.visual_encoder_decoder.encoder(input_ids=self.get_text_embeddings(self.lora_set_input_ids), attention_mask=self.lora_set_attention_mask)
+
+        # Decoder processing (e.g., classification or generation)
+        projected_embeddings = self.clip_to_t5_projector(self.lora_set_images_input_embeddings)
+        decoder_outputs = self.visual_encoder_decoder.decoder(inputs_embeds=projected_embeddings, encoder_hidden_states=encoder_outputs.last_hidden_state, encoder_attention_mask=self.lora_set_attention_mask)
+
+        # Get encoder and decoder outputs
+        outputs = self.encoder_decoder(
+            input_embeds=decoder_outputs.last_hidden_state,
+            decoder_input_ids=decoder_input_ids,
+            decoder_attention_mask=decoder_attention_mask,
+        )
+
+        # Use the last hidden state of the decoder (first token representation)
+        decoder_hidden_state = outputs.last_hidden_state  # Shape: (batch_size, sequence_length, hidden_size)
+        # class_token_hidden_state = decoder_hidden_state[:, class_token_indexes, :]
+
+        # Gather class token hidden states using torch.gather
+        index_expanded = class_token_indexes.unsqueeze(-1).expand(-1, -1, decoder_hidden_state.shape[-1])  # Shape: (batch_size, num_classes, hidden_size)
+        class_token_hidden_state = torch.gather(decoder_hidden_state, dim=1, index=index_expanded)  # Shape: (batch_size, num_classes, hidden_size)
+
+        # Pass through classification head
+        logits = self.classifier(class_token_hidden_state).squeeze(-1)  # Shape: (batch_size, num_classes)
+        probabilities = self.softmax(logits)
+
+        return logits, probabilities  # Logits for training, probabilities for inference
+    
+
+class MultiModalEncoderDecoderForClassification(nn.Module):
+    def __init__(self, model_name, lora_set):
+        super().__init__()
+        self.lora_set = lora_set
+
+        self.register_buffer("lora_set_class_delimiter_token_indexes", self.lora_set['class_delimiter_token_indexes']) # (lora_set_size, 1)
+        self.register_buffer("lora_set_images_input_embeddings", self.lora_set['images_input_embeddings']) # (lora_set_size, 10, 512)
+        self.register_buffer("lora_set_input_ids", self.lora_set['input_ids']) # (lora_set_size, 512)
+        self.register_buffer("lora_set_attention_mask", self.lora_set['attention_mask']) # (lora_set_size, 512)
+
+        self.clip_to_t5_projector = nn.Sequential(
+            nn.Linear(512, 956),
+            nn.GELU(),
+            nn.Linear(956, 512),
+        )
+        self.encoder_decoder = T5Model.from_pretrained(model_name)
+        self.classifier = nn.Sequential(
+            nn.Linear(self.encoder_decoder.config.d_model, 2 * self.encoder_decoder.config.d_model), 
+            nn.GELU(),
+            nn.Linear(2 * self.encoder_decoder.config.d_model, 1),
+            )  # Classification head
+        self.softmax = nn.Softmax(dim=-1)  # Convert logits to probabilities
+
+    def reverse_token_mapping(text_indexes, offset_mappings):
+        matched_mapping_indexes = []
+        for index, mapping in enumerate(offset_mappings):
+            if mapping[0] <= text_indexes[0] and mapping[1] >= text_indexes[1]:
+                matched_mapping_indexes.append(index)
+        return matched_mapping_indexes
+
+    def build_lora_ensemble(lora_set, tokenizer):
+        # text = "The following are the descriptions of the LoRA: \n\n"
+        text = ""
+        descriptions = []
+        class_delimiter_indexes = []
+        for lora_index, lora_name in enumerate(lora_set.keys()):
+            class_description = f"{{[CLASS_{lora_index}]: {lora_set[lora_name]['lora_meta']}.}}"
+            # class_delimiter_index = class_description.rfind('}')
+            class_delimiter_index = len(class_description) - 1
+            class_delimiter_indexes.append(class_delimiter_index)
+            descriptions.append(class_description)
+        seperator = ';\n\n'
+        text += seperator.join(descriptions)
+        text += '.'
+        for i in range(len(class_delimiter_indexes)):
+            class_delimiter_indexes[i] = class_delimiter_indexes[i] + (class_delimiter_indexes[i - 1] + len(seperator) + 1 if i > 0 else 0)
+        tokenized_text = tokenizer(text, truncation=True, padding='max_length', max_length=512, return_tensors='pt', return_offsets_mapping=True)
+        offset_mappings = tokenized_text.offset_mapping
+
+        class_delimiter_token_indexes = []
+        for class_delimiter_index in class_delimiter_indexes:
+            class_delimiter_token_indexes.append(reverse_token_mapping([class_delimiter_index, class_delimiter_index + 1], offset_mappings[0])[0])
+
+        return tokenized_text, class_delimiter_token_indexes
+    
+    def tensor_insert(tensor, value, index, dim):
+        # Ensure value has the correct number of dimensions
+        if tensor.dim() != value.dim():
+            raise ValueError("Value must have the same number of dimensions as the input tensor.")
+
+        # Split the tensor along the specified dimension
+        if index > tensor.size(dim):
+            raise IndexError(f"Index {index} is out of bounds for dimension {dim} with size {tensor.size(dim)}")
+
+        # Slice and concatenate
+        before = tensor.narrow(dim, 0, index)  # Select everything before the index
+        after = tensor.narrow(dim, index, tensor.size(dim) - index)  # Select everything after the index
+        return torch.cat([before, value, after], dim=dim)
+        
+
+    def get_text_embeddings(self, input_ids):
+        inputs_embeds = self.encoder_decoder.shared(input_ids)
+        return inputs_embeds
+    
+    def insert_image_embeddings_into_text_embeddings(self, text_embeddings, class_delimiter_token_indexes, image_embeddings_list):
+        inserted_embeddings = text_embeddings
+        for index,class_delimiter_token_index in enumerate(class_delimiter_token_indexes):
+            to_insert_embeddings = image_embeddings_list[index]
+            inserted_embeddings = tensor_insert(inserted_embeddings, to_insert_embeddings, class_delimiter_token_index, 1)
+        return inserted_embeddings
+    
+    def forward(self, decoder_input_ids, decoder_attention_mask, class_token_indexes):
+
+        projected_embeddings = self.clip_to_t5_projector(self.lora_set_images_input_embeddings)
+        lora_set_input_embeddings = self.get_text_embeddings(self.lora_set_input_ids)
+        inserted_embeddings = self.insert_image_embeddings_into_text_embeddings(lora_set_input_embeddings, self.lora_set_class_delimiter_token_indexes, projected_embeddings)
+        # Get encoder and decoder outputs
+        outputs = self.encoder_decoder(
+            input_embeds=inserted_embeddings,
+            decoder_input_ids=decoder_input_ids,
+            decoder_attention_mask=decoder_attention_mask,
+        )
+
+        # Use the last hidden state of the decoder (first token representation)
+        decoder_hidden_state = outputs.last_hidden_state  # Shape: (batch_size, sequence_length, hidden_size)
+        # class_token_hidden_state = decoder_hidden_state[:, class_token_indexes, :]
+
+        # Gather class token hidden states using torch.gather
+        index_expanded = class_token_indexes.unsqueeze(-1).expand(-1, -1, decoder_hidden_state.shape[-1])  # Shape: (batch_size, num_classes, hidden_size)
+        class_token_hidden_state = torch.gather(decoder_hidden_state, dim=1, index=index_expanded)  # Shape: (batch_size, num_classes, hidden_size)
+
+        # Pass through classification head
+        logits = self.classifier(class_token_hidden_state).squeeze(-1)  # Shape: (batch_size, num_classes)
+        probabilities = self.softmax(logits)
+
+        return logits, probabilities  # Logits for training, probabilities for inference
+
+
+class MultiModalLoRASetEmbedding():
+    def __init__(self, lora_set, embeddings):
+        self.lora_set = lora_set
+        self.embeddings = embeddings
+
+    def reverse_token_mapping(text_indexes, offset_mappings):
+        matched_mapping_indexes = []
+        for index, mapping in enumerate(offset_mappings):
+            if mapping[0] <= text_indexes[0] and mapping[1] >= text_indexes[1]:
+                matched_mapping_indexes.append(index)
+        return matched_mapping_indexes
+
+    def build_lora_ensemble(lora_set, tokenizer):
+        # text = "The following are the descriptions of the LoRA: \n\n"
+        text = ""
+        descriptions = []
+        class_delimiter_indexes = []
+        for lora_index, lora_name in enumerate(lora_set.keys()):
+            class_description = f"{{[CLASS_{lora_index}]: {lora_set[lora_name]['lora_meta']}.}}"
+            # class_delimiter_index = class_description.rfind('}')
+            class_delimiter_index = len(class_description) - 1
+            class_delimiter_indexes.append(class_delimiter_index)
+            descriptions.append(class_description)
+        seperator = ';\n\n'
+        text += seperator.join(descriptions)
+        text += '.'
+        for i in range(len(class_delimiter_indexes)):
+            class_delimiter_indexes[i] = class_delimiter_indexes[i] + (class_delimiter_indexes[i - 1] + len(seperator) + 1 if i > 0 else 0)
+        tokenized_text = tokenizer(text, truncation=True, padding='max_length', max_length=512, return_tensors='pt', return_offsets_mapping=True)
+        offset_mappings = tokenized_text.offset_mapping
+
+        class_delimiter_token_indexes = []
+        for class_delimiter_index in class_delimiter_indexes:
+            class_delimiter_token_indexes.append(reverse_token_mapping([class_delimiter_index, class_delimiter_index + 1], offset_mappings[0])[0])
+
+        return tokenized_text, class_delimiter_token_indexes
+    
+    def tensor_insert(tensor, value, index, dim):
+        # Ensure value has the correct number of dimensions
+        if tensor.dim() != value.dim():
+            raise ValueError("Value must have the same number of dimensions as the input tensor.")
+
+        # Split the tensor along the specified dimension
+        if index > tensor.size(dim):
+            raise IndexError(f"Index {index} is out of bounds for dimension {dim} with size {tensor.size(dim)}")
+
+        # Slice and concatenate
+        before = tensor.narrow(dim, 0, index)  # Select everything before the index
+        after = tensor.narrow(dim, index, tensor.size(dim) - index)  # Select everything after the index
+        return torch.cat([before, value, after], dim=dim)
+        
+
+    def get_text_embeddings(self, input_ids):
+        inputs_embeds = self.encoder_decoder.shared(input_ids)
+        return inputs_embeds
+    
+    def insert_image_embeddings_into_text_embeddings(self, text_embeddings, class_delimiter_token_indexes, image_embeddings_list):
+        inserted_embeddings = text_embeddings
+        for index,class_delimiter_token_index in enumerate(class_delimiter_token_indexes):
+            to_insert_embeddings = image_embeddings_list[index]
+            inserted_embeddings = tensor_insert(inserted_embeddings, to_insert_embeddings, class_delimiter_token_index, 1)
+        return inserted_embeddings
+
 from transformers import Trainer
 import torch
 import torch.nn as nn
@@ -410,11 +642,27 @@ class CustomDataCollatorWithPadding:
 def build_lora_ensemble(lora_set, tokenizer):
     # text = "The following are the descriptions of the LoRA: \n\n"
     text = ""
-    descriptions = [ f"{{[CLASS_{lora_index}]: {lora_set[lora_name]['lora_meta']}}}" for lora_index, lora_name in enumerate(lora_set.keys()) ]
-    text += ';\n\n'.join(descriptions)
+    descriptions = []
+    class_delimiter_indexes = []
+    for lora_index, lora_name in enumerate(lora_set.keys()):
+        class_description = f"{{[CLASS_{lora_index}]: {lora_set[lora_name]['lora_meta']}.}}"
+        # class_delimiter_index = class_description.rfind('}')
+        class_delimiter_index = len(class_description) - 1
+        class_delimiter_indexes.append(class_delimiter_index)
+        descriptions.append(class_description)
+    seperator = ';\n\n'
+    text += seperator.join(descriptions)
     text += '.'
-    tokenized_text = tokenizer(text, truncation=True, padding='max_length', max_length=512, return_tensors='pt')
-    return tokenized_text
+    for i in range(len(class_delimiter_indexes)):
+        class_delimiter_indexes[i] = class_delimiter_indexes[i] + (class_delimiter_indexes[i - 1] + len(seperator) + 1 if i > 0 else 0)
+    tokenized_text = tokenizer(text, truncation=True, padding='max_length', max_length=512, return_tensors='pt', return_offsets_mapping=True)
+    offset_mappings = tokenized_text.offset_mapping
+
+    class_delimiter_token_indexes = []
+    for class_delimiter_index in class_delimiter_indexes:
+        class_delimiter_token_indexes.append(reverse_token_mapping([class_delimiter_index, class_delimiter_index + 1], offset_mappings[0])[0])
+
+    return tokenized_text, class_delimiter_token_indexes
 
 
 def main(lora_path, prompt_path, lora_meta_path, *args, **kwargs):
@@ -437,9 +685,10 @@ def main(lora_path, prompt_path, lora_meta_path, *args, **kwargs):
     # print(dataset[2])
     class_token_input_ids = get_class_token_input_ids(class_tokens, tokenizer)
     tokenized_dataset = dataset.map(lambda x: tokenize_function(x, tokenizer, class_tokens, class_token_input_ids), batched=True)
-    tokenized_text = build_lora_ensemble(lora_set, tokenizer)
+    tokenized_text, class_delimiter_token_indexes = build_lora_ensemble(lora_set, tokenizer)
     lora_set['input_ids'] = tokenized_text['input_ids']
     lora_set['attention_masks'] = tokenized_text['attention_masks']
+    lora_set['class_delimiter_token_indexes'] = torch.tensor(class_delimiter_token_indexes)
     model = EncoderDecoderForClassification("t5-small", lora_set).to(device)
 
     data_collator = CustomDataCollatorWithPadding(tokenizer=tokenizer) 
