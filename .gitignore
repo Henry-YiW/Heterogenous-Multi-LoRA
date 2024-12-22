@@ -36,3 +36,10 @@
 **/*.out
 
 **/__pycache__
+
+
+**/wandb
+
+**/results
+
+**/output_dir
